@@ -22,9 +22,8 @@
             <ul>
                 <li><a class="active" href="home.jsp">Home</a></li>
                 <li><a href="cadastrarCliente.jsp">Cliente</a></li>
-                <li><a href="#">Produto</a></li>
-                <li><a href="#">Fornecedor</a></li>
-                <li><a href="#">Usuário</a></li>
+                <li><a href="cadastrarProduto.jsp">Produto</a></li>
+                <li><a href="cadastrarUsuario.jsp">Usuário</a></li>
                 <li><a href="#">Venda</a></li>
                 <li><a href="#">Relatório</a></li>
             </ul>
