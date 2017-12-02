@@ -64,137 +64,144 @@
         </div>
     </nav>
     <body>
-        <section>
-            <div id="box" class="container-fluid">
-                <div class="container">
-                    <div class="formBox">
+        <c:if test="${not empty mensagem}">
 
-                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/cadastro-usuario" method="post">
+
+        <alert><c:out value="${mensagem}" /></alert>
+
+
+    </c:if> 
+    <section>
+        <div id="box" class="container-fluid">
+            <div class="container">
+                <div class="formBox">
+
+                    <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/cadastro-usuario" method="post">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1>Cadastrar Usuário</h1>
+                            </div>
                             <div class="row">
-                                <div class="col-sm-12">
-                                    <h1>Cadastrar Usuário</h1>
+                                <div class="col-sm-6">
+                                    <div class="inputBox">
+                                        <div class="inputText">Nome</div>
+                                        <input type="text" maxlength="50" size="50" name="nome" class="input required" id="fnome">
+
+                                    </div>
+
+
+
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="inputBox">
-                                            <div class="inputText">Nome</div>
-                                            <input type="text" maxlength="50" size="50" name="nome" class="input required" id="fnome">
 
-                                        </div>
+                                <div class="col-sm-6">
+                                    <div class="inputText">Sobrenome</div>
+                                    <input type="text" maxlength="50" size="50" name="sobrenome" class="input required" id="fnome">
 
-
-
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="inputText">Sobrenome</div>
-                                        <input type="text" maxlength="50" size="50" name="sobrenome" class="input required" id="fnome">
-
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="inputBox">
-                                            <div class="inputText">CPF</div>
-                                            <input id="cpf" type="number" maxlength="11" size="11" name="cpf" class="input required">
-                                        </div>
-
-
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="inputBox">
-                                            <div class="inputText">Email</div>
-                                            <input type="text" name="email" class="input required email">
-                                        </div>
-
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="inputBox">
-                                            <div class="inputText">Telefone</div>
-                                            <input type="number" maxlength="12" size="12" name="telefone" class="input required ">
-                                        </div>
-
-                                    </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
-                                        <div class="inputText">CEP</div>
-                                        <input id="cep" type="number" maxlength="8" size="8" name="cep" class="input required ">
+                                        <div class="inputText">CPF</div>
+                                        <input id="cpf" type="number" maxlength="11" size="11" name="cpf" class="input required">
+                                    </div>
+
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="inputBox">
+                                        <div class="inputText">Email</div>
+                                        <input type="text" name="email" class="input required email">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
-                                        <div class="inputText">Rua</div>
-                                        <input id="rua" type="text" name="endereco" class="input required ">
+                                        <div class="inputText">Telefone</div>
+                                        <input type="number" maxlength="12" size="12" name="telefone" class="input required ">
                                     </div>
 
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="inputBox">
-                                        <div class="inputText">Cidade</div>
-                                        <input id="cidade" type="text" name="cidade" class="input required ">
-                                    </div>
-
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="inputBox">
-                                        <div class="inputText">UF</div>
-                                        <input id="uf" type="text" name="estado" class="input required ">
-                                    </div>
-
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="inputBox">
-                                        <div class="inputText">Número</div>
-                                        <input  type="number" name="numero" class="input required ">
-                                    </div>
-
-                                </div>
-                                <div class="col-sm-12">
-                                    <h2>Cadastrar Login/Senha</h2>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="inputBox">
-                                        <div class="inputText">Login</div>
-                                        <input  type="text" name="login" class="input required ">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="inputBox">
-                                        <div class="inputText">Senha</div>
-                                        <input  type="password" name="senha" class="input required ">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="inputBox">
-                                        <div class="inputText">Confirmar senha</div>
-                                        <input  type="password" name="confirmarSenha" class="input required ">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class = "inputBox" >
-                                        <label>Função</label>
-                                        <select name = "funcao">
-                                            <option value = "gerente">Gerente </option>
-                                            <option value = "vendedor">Vendedor </option>
-                                             <option value = "estoquista">Estoquista</option>
-                                              <option value = "ti">Técnico</option>
-                                                    
-                                        </select>
-                                    </div>
-                                </div>    
-
-                                <div class="col-sm-12">
-                                    <input type="submit" name="" value="Salvar" class="button">
                                 </div>
                             </div>
-                    </div>
-                    </form>
+                            <div class="col-sm-6">
+                                <div class="inputBox">
+                                    <div class="inputText">CEP</div>
+                                    <input id="cep" type="number" maxlength="8" size="8" name="cep" class="input required ">
+                                </div>
 
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="inputBox">
+                                    <div class="inputText">Rua</div>
+                                    <input id="rua" type="text" name="endereco" class="input required ">
+                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="inputBox">
+                                    <div class="inputText">Cidade</div>
+                                    <input id="cidade" type="text" name="cidade" class="input required ">
+                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="inputBox">
+                                    <div class="inputText">UF</div>
+                                    <input id="uf" type="text" name="estado" class="input required ">
+                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="inputBox">
+                                    <div class="inputText">Número</div>
+                                    <input  type="number" name="numero" class="input required ">
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12">
+                                <h2>Cadastrar Login/Senha</h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="inputBox">
+                                    <div class="inputText">Login</div>
+                                    <input  type="text" name="login" class="input required ">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="inputBox">
+                                    <div class="inputText">Senha</div>
+                                    <input  type="password" name="senha" class="input required ">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="inputBox">
+                                    <div class="inputText">Confirmar senha</div>
+                                    <input  type="password" name="confirmarSenha" class="input required ">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class = "inputBox" >
+                                    <label>Função</label>
+                                    <select name = "funcao">
+                                        <option value = "gerente">Gerente </option>
+                                        <option value = "vendedor">Vendedor </option>
+                                        <option value = "estoquista">Estoquista</option>
+                                        <option value = "ti">Técnico</option>
+
+                                    </select>
+                                </div>
+                            </div>    
+
+                            <div class="col-sm-12">
+                                <input type="submit" name="" value="Salvar" class="button">
+                            </div>
+                        </div>
                 </div>
-            </div>
+                </form>
 
+            </div>
         </div>
-    </section>
+
+    </div>
+</section>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>

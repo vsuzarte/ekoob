@@ -23,14 +23,14 @@ public class ValidadorCliente {
             erro += "Nome obrigatório \n";
         }
         if (cliente.getNome().length() > 14) {
-            erro += "Erro! Digite novamente \n";
+            erro += "Nome muito grande !  \n";
         }
         if (cliente.getSobrenome() == null || "".equals(cliente.getSobrenome()) || cliente.getSobrenome().startsWith(" ")) {
             erro += "Sobrenome obrigatório \n";
         }
 
         if (cliente.getSobrenome().length() > 30) {
-            erro += "Digite novamente \n";
+            erro += "Sobrenome muito grande !  \n";
         }
 
      
@@ -38,9 +38,11 @@ public class ValidadorCliente {
             erro += "CPF obrigatório \n";
         }
 
-        if (ValidadorCPF.validar(cliente.getCpf())) {
-            erro += "Erro! Digite novamente";
+        
+         if (cliente.getCpf().length() < 11) {
+            erro += "Número de CPF muito pequeno \n";
         }
+        
 
         /*if (ValidadorEmail.validar(cliente.getEmail())) {
             erro += "E-mail obrigatório \n";
@@ -58,11 +60,11 @@ public class ValidadorCliente {
         }
 
         if (cliente.getCidade().length() > 30) {
-            erro += "Erro! Digite novamente \n";
+            erro += "Nome da cidade muito grande !  \n";
         }
       
         if (cliente.getEndereco().length() > 30) {
-            erro += "Erro! Digite novamente \n";
+            erro += "Endereço muito grande ! Digite apenas o nome da rua \n";
         }
 
         if (cliente.getCep() == null || "".equals(cliente.getCep())) {
@@ -72,12 +74,10 @@ public class ValidadorCliente {
             erro += "Número da casa obrigatório \n";
         }
         if (cliente.getNumCasa().length() > 10) {
-            erro += "Erro! Digite novamente \n";
+            erro += "Número muito grande !  \n";
         }
 
-        if (cliente.getGenero() == null || (!cliente.getGenero().equals("M") && !cliente.getGenero().equals("F"))) {
-            erro += "Sexo obrigatório \n";
-        }
+       
 
         return erro;
     }

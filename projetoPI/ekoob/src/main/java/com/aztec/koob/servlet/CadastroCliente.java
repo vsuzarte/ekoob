@@ -35,7 +35,6 @@ public class CadastroCliente extends HttpServlet {
 
             destino = "CadastroCliente.jsp";
         }
-        
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
         dispatcher.forward(request, response);
@@ -53,7 +52,7 @@ public class CadastroCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession sessao = request.getSession();
         if (sessao == null || sessao.getAttribute("usuario") == null) {
             request.setAttribute("mensagemErro", "Você precisa logar ! ");
@@ -74,8 +73,7 @@ public class CadastroCliente extends HttpServlet {
         String numCasa = request.getParameter("numero");
         String cep = request.getParameter("cep");
 
-
-        Cliente cliente = new Cliente(nome, sobrenome,  cpf, email, telefone, estado, cidade, endereco, cep, numCasa);
+        Cliente cliente = new Cliente(nome, sobrenome, cpf, email, telefone, estado, cidade, endereco, cep, numCasa);
         cliente.setNome(nome);
         cliente.setSobrenome(sobrenome);
         cliente.setCpf(cpf);
@@ -87,8 +85,7 @@ public class CadastroCliente extends HttpServlet {
         cliente.setNumCasa(numCasa);
         cliente.setCep(cep);
 
-       // String erro = ValidadorCliente.validarCliente(cliente);
-       String erro = "";
+        String erro = ValidadorCliente.validarCliente(cliente);
 
         if (!erro.equals("")) {
             request.setAttribute("mensagem", erro);
@@ -107,9 +104,14 @@ public class CadastroCliente extends HttpServlet {
             }
 
             //cria ou recupera uma sessão ja existente
-             sessao = request.getSession();
+            sessao = request.getSession();
 
-            response.sendRedirect(request.getContextPath() + "/cadastrarCliente.jsp");
+            request.setAttribute("mensagem", "Cliente cadastrado ! ");
+            RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("/cadastrarCliente.jsp");
+            dispatcher.forward(request, response);
+
+            
         }
 
     }
