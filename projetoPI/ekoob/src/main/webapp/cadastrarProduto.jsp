@@ -16,16 +16,48 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
     </head>
-    <nav>
+     <nav>
         <div class="full-width navbar">
             <h2 class="brand">e-koob</h2>
             <ul>
                 <li><a class="active" href="home.jsp">Home</a></li>
-                <li><a href="cadastrarCliente.jsp">Cliente</a></li>
-                <li><a href="cadastrarProduto.jsp">Produto</a></li>
-                <li><a href="cadastrarUsuario.jsp">Usuário</a></li>
-                <li><a href="venda.jsp">Venda</a></li>
-                <li><a href="relatorio.jsp">Relatório</a></li>
+
+                <c:if test = "${sessionScope.usuario.getFuncao().equals('vendedor')
+                                ||sessionScope.usuario.getFuncao().equals('estoquista') 
+                                || sessionScope.usuario.getFuncao().equals('gerente')}">
+                      <li><a id ="produto" href = "cadastrarProduto.jsp">Produto</a></li>
+                      </c:if>
+
+                <c:if test = "${sessionScope.usuario.getFuncao().equals('vendedor')
+                                || sessionScope.usuario.getFuncao().equals('gerente')}">
+
+                      <li><a id ="cliente" href="cadastrarCliente.jsp">Cliente</a></li>
+
+                </c:if>
+
+                <c:if test = "${sessionScope.usuario.getFuncao().equals('ti') 
+                                || sessionScope.usuario.getFuncao().equals('gerente')}">
+
+                      <li><a id ="usuario"href="cadastrarUsuario.jsp">Usuário</a></li>
+
+                </c:if>
+
+                <c:if test = "${sessionScope.usuario.getFuncao().equals('vendedor')
+
+                                || sessionScope.usuario.getFuncao().equals('gerente')}">
+                      <li><a id ="venda"href="venda.jsp">Venda</a></li>
+                      </c:if>
+
+                <c:if test = "${sessionScope.usuario.getFuncao().equals('gerente')}">
+                    <li><a id = "relatorio" href="relatorio.jsp">Relatório</a></li>
+                    </c:if>
+
+
+
+
+
+
+
             </ul>
             <div style="clear: both"></div>
         </div>

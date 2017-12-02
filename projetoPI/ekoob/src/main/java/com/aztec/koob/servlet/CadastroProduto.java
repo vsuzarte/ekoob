@@ -89,7 +89,7 @@ public class CadastroProduto extends HttpServlet {
             e.printStackTrace();
         }
 
-        response.sendRedirect(request.getContextPath() + "/cadastro-produto");
+        response.sendRedirect(request.getContextPath() + "/cadastrarProduto.jsp");
 
     }
 }
