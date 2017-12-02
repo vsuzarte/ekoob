@@ -26,13 +26,13 @@ body{
     float: right;
     margin: 0;
     display: flex;
-    
+
 }
 
 .full-width.navbar ul li{
-    
+
     list-style: none;
-    
+
 }
 
 .full-width.navbar ul li a{
@@ -40,9 +40,9 @@ body{
     color: #fff;
     padding: 20px;
     text-decoration: none;
-        
-    
-    
+
+
+
 }
 
 .full-width.navbar ul li a .active,
@@ -50,5 +50,10 @@ body{
     background: #cccccc; 
 }
 
+.nav-justified{
+    background: rgba(0,0,0,.5);
+}
 
-
+.abranc{
+    color: #fff;
+}

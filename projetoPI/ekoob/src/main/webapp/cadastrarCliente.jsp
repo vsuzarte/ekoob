@@ -16,7 +16,14 @@
         <link rel="stylesheet" href="css/homecss.css"/>
         <link rel="stylesheet" href="css/crudcss.css"/>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </head>
     <nav>
         <div class="full-width navbar">
@@ -65,15 +72,25 @@
         </div>
     </nav>
     <body>
-
+    <di>
         <c:if test="${not empty mensagem}">
+            <alert><c:out value="${mensagem}" /></alert>
+            </c:if> 
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="nav nav-pills nav-justified">
+                    <li class="active"><a class="abranc" href="cadastrarCliente.jsp">Cadastro Cliente</a></li>
+                    <li><a class="abranc" href="consultarCliente.jsp">Consultar Cliente</a></li>
 
-           
-        <alert><c:out value="${mensagem}" /></alert>
+                </ul>
 
+            </div>
 
-    </c:if> 
+        </div>
 
+    </div>
     <section>
         <div id="box" class="container-fluid">
             <div class="container">
@@ -168,19 +185,19 @@
             </div>
         </div>
 
-    </div>
-</section>
+        </div>
+    </section>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script type="text/javascript">
-               $(".input").focus(function () {
-                   $(this).parent().addClass("focus");
-               }).blur(function () {
-                   if ($(this).val() === '') {
-                       $(this).parent().removeClass("focus");
-                   }
-               });
+    $(".input").focus(function () {
+        $(this).parent().addClass("focus");
+    }).blur(function () {
+        if ($(this).val() === '') {
+            $(this).parent().removeClass("focus");
+        }
+    });
 </script>
 <script>
     $(document).ready(function () {

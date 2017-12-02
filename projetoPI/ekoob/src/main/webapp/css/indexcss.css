@@ -17,9 +17,11 @@ body{
     transition: .5s;
 }
 
+
 .loginBox:hover{
+    
     box-shadow: 0 10px 20px rgba(0,0,0,0);
-    background: rgba(255,255,255,1);
+    background: rgba(255,255,255,0.5);
 }
 
 .glass{
@@ -32,10 +34,11 @@ body{
     transition: .5s;
 }
 
+/*
 .glass:hover{
     transform: translate(20px,20px);
     box-shadow: 0 10px 20px rgba(0,0,0,.5);
-}
+}*/
 
 .user{
     margin: 0 auto;
