@@ -30,11 +30,11 @@ public class UsuarioDAO {
         Connection conn = null;
 
         String sql = "INSERT INTO Usuario(nomeUsuario, sobrenomeUsuario, "
-                + "funcao, dataNasc, cpfUsuario, emailUsuario, telefoneUsuario,"
+                + "funcao,  cpfUsuario, emailUsuario, telefoneUsuario,"
                 + " estadoUsuario,"
                 + " cidadeUsuario, enderecoUsuario, disponivel, cepUsuario, "
                 + "username, senha) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement stmt = null;
 
@@ -49,21 +49,21 @@ public class UsuarioDAO {
 
             stmt.setString(3, usuario.getFuncao());
 
-            stmt.setDate(4, usuario.getDataNasc());
+        
 
-            stmt.setString(5, usuario.getCpf());
+            stmt.setString(4, usuario.getCpf());
 
-            stmt.setString(6, usuario.getEmail());
+            stmt.setString(5, usuario.getEmail());
 
-            stmt.setString(7, usuario.getTelefone());
+            stmt.setString(6, usuario.getTelefone());
 
-            stmt.setString(8, usuario.getEstado());
+            stmt.setString(7, usuario.getEstado());
 
-            stmt.setString(9, usuario.getCidade());
+            stmt.setString(8, usuario.getCidade());
 
-            stmt.setString(10, usuario.getEndereco());
+            stmt.setString(9, usuario.getEndereco());
 
-            stmt.setBoolean(11, true);
+            stmt.setBoolean(10, true);
 
             stmt.setString(12, usuario.getCep());
 
@@ -120,7 +120,7 @@ public class UsuarioDAO {
                 String nomeUsuario = result.getString("nomeUsuario");
                 String sobrenomeUsuario = result.getString("sobrenomeUsuario");
                 String funcao = result.getString("funcao");
-                Date dataNasc = ValidadorData.formatarData(result.getString("dataNasc"));
+            
                 String cpfUsuario = result.getString("cpfUsuario");
                 String emailUsuario = result.getString("emailUsuario");
                 String telefoneUsuario = result.getString("telefoneUsuario");
@@ -132,7 +132,7 @@ public class UsuarioDAO {
                 String senha = result.getString("senha");
 
                 Usuario usuario = new Usuario(idFuncionario, nomeUsuario, sobrenomeUsuario,
-                        dataNasc, cpfUsuario, emailUsuario,
+                         cpfUsuario, emailUsuario,
                         telefoneUsuario, estadoUsuario, cidadeUsuario,
                         enderecoUsuario, cepUsuario, funcao,
                         senha, username);
@@ -204,7 +204,7 @@ public class UsuarioDAO {
                 String nomeUsuario = result.getString("nomeUsuario");
                 String sobrenomeUsuario = result.getString("sobrenomeUsuario");
                 String funcao = result.getString("funcao");
-                Date dataNasc = ValidadorData.formatarData(result.getString("dataNasc"));
+                
                 String cpfUsuario = result.getString("cpfUsuario");
                 String emailUsuario = result.getString("emailUsuario");
                 String telefoneUsuario = result.getString("telefoneUsuario");
@@ -216,7 +216,7 @@ public class UsuarioDAO {
                 String senha = result.getString("senha");
 
                 Usuario usuario = new Usuario(idUsuario, nomeUsuario, sobrenomeUsuario,
-                        dataNasc, cpfUsuario, emailUsuario,
+                         cpfUsuario, emailUsuario,
                         telefoneUsuario, estadoUsuario, cidadeUsuario,
                         enderecoUsuario, cepUsuario, funcao,
                         senha, username);
@@ -299,7 +299,7 @@ public class UsuarioDAO {
         //Monta a string com o comando SQL para atualizar dados na tabela cliente
         //ultilizando os dados do cliente passado por parâmetro.
         //A String ira ser ultilizada pelo prepared statement
-        String sql = "UPDATE usuario SET nomeUsuario=?, sobrenomeUsuario=?, dataNasc=?, cpfUsuario=?, emailUsuario=?, telefoneUsuario=?, estadoUsuario=?, cidadeUsuario=?,"
+        String sql = "UPDATE usuario SET nomeUsuario=?, sobrenomeUsuario=?, cpfUsuario=?, emailUsuario=?, telefoneUsuario=?, estadoUsuario=?, cidadeUsuario=?,"
                 + "enderecoUsuario=?, cepUsuario=?, senha=?, cargo=?"
                 + "WHERE (idFuncionario=?)";
 
@@ -325,27 +325,27 @@ public class UsuarioDAO {
 
             preparedStatement.setString(2, usuario.getSobrenome());
 
-            preparedStatement.setDate(3, usuario.getDataNasc());
+   
 
-            preparedStatement.setString(4, usuario.getCpf());
+            preparedStatement.setString(3, usuario.getCpf());
 
-            preparedStatement.setString(5, usuario.getEmail());
+            preparedStatement.setString(4, usuario.getEmail());
 
-            preparedStatement.setString(6, usuario.getTelefone());
+            preparedStatement.setString(5, usuario.getTelefone());
 
-            preparedStatement.setString(7, usuario.getEstado());
+            preparedStatement.setString(6, usuario.getEstado());
 
-            preparedStatement.setString(8, usuario.getCidade());
+            preparedStatement.setString(7, usuario.getCidade());
 
-            preparedStatement.setString(9, usuario.getEndereco());
+            preparedStatement.setString(8, usuario.getEndereco());
 
-            preparedStatement.setString(10, usuario.getCep());
+            preparedStatement.setString(9, usuario.getCep());
 
-            preparedStatement.setString(11, usuario.getSenha());
+            preparedStatement.setString(10, usuario.getSenha());
 
-            preparedStatement.setString(12, usuario.getFuncao());
+            preparedStatement.setString(11, usuario.getFuncao());
 
-            preparedStatement.setInt(13, usuario.getId());
+            preparedStatement.setInt(12, usuario.getId());
 
             //Exucuta o comando do banco de dados.
             preparedStatement.execute();
@@ -404,7 +404,7 @@ public class UsuarioDAO {
                 String nomeUsuario = result.getString("nomeUsuario");
                 String sobrenomeUsuario = result.getString("sobrenomeUsuario");
                 String funcao = result.getString("funcao");
-                Date dataNasc = ValidadorData.formatarData(result.getString("dataNasc"));
+              
                 String cpfUsuario = result.getString("cpfUsuario");
                 String emailUsuario = result.getString("emailUsuario");
                 String telefoneUsuario = result.getString("telefoneUsuario");
@@ -419,7 +419,7 @@ public class UsuarioDAO {
                 usuario.setId(idUsuario);
                 usuario.setSobrenome(sobrenomeUsuario);
                 usuario.setFuncao(funcao);
-                usuario.setDataNasc(dataNasc);
+
                 usuario.setCpf(cpfUsuario);
                 usuario.setEmail(emailUsuario);
                 usuario.setTelefone(telefoneUsuario);

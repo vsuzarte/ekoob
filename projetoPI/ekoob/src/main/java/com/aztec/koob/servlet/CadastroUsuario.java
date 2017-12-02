@@ -70,7 +70,7 @@ public class CadastroUsuario extends HttpServlet {
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String cpf = request.getParameter("cpf");
-        String username = request.getParameter("username");
+        String username = request.getParameter("login");
         String senha = request.getParameter("senha");
         String confirmaSenha = request.getParameter("confirmaSenha");
         String email = request.getParameter("email");
@@ -84,7 +84,7 @@ public class CadastroUsuario extends HttpServlet {
 
         Date dataSql = ValidadorData.formatarData(data);
 
-        Usuario usuario = new Usuario(0, nome, sobrenome, dataSql, cpf, email, telefone, estado, cidade, endereco, cep, funcao, senha, username);
+        Usuario usuario = new Usuario(0, nome, sobrenome,  cpf, email, telefone, estado, cidade, endereco, cep, funcao, senha, username);
 
         usuario.setNome(nome);
         usuario.setSobrenome(sobrenome);
@@ -98,7 +98,7 @@ public class CadastroUsuario extends HttpServlet {
         usuario.setUsername(username);
         usuario.setEstado(estado);
         usuario.setCidade(cidade);
-        usuario.setDataNasc(dataSql);
+        
 
         try {
             UsuarioDAO.inserirUsuario(usuario);

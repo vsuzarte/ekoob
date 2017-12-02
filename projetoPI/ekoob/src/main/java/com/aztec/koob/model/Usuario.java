@@ -17,7 +17,7 @@ public class Usuario {
     private String nome;;
     private String sobrenome;;
     private String funcao;;
-    private Date dataNasc;;
+ 
     private String cep;;
     private String username;
     private String cpf;;
@@ -32,7 +32,7 @@ public class Usuario {
         
     }
 
-    public Usuario(int id, String nome, String sobrenome, Date dataNasc, 
+    public Usuario(int id, String nome, String sobrenome, 
             String cpf, String email, String telefone, String estado, 
             String cidade, String endereco, String cep, 
             String funcao, String senha, String username){
@@ -40,7 +40,7 @@ public class Usuario {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.dataNasc = dataNasc;
+     
         this.cpf = cpf;
         this.email = email;
         this.telefone = telefone;
@@ -95,13 +95,7 @@ public class Usuario {
         this.sobrenome = sobrenome;
     }
 
-    public Date getDataNasc() {
-        return dataNasc;
-    }
-
-    public void setDataNasc(Date dataNasc) {
-        this.dataNasc = dataNasc;
-    }
+  
 
     public int getId() {
         return id;

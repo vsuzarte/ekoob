@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,7 +69,7 @@
                 <div class="container">
                     <div class="formBox">
 
-                        <form id="registerform" name="registerform">
+                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/cadastro-usuario" method="post">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h1>Cadastrar Usuário</h1>
@@ -81,12 +82,21 @@
 
                                         </div>
 
+
+
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="inputText">Sobrenome</div>
+                                        <input type="text" maxlength="50" size="50" name="sobrenome" class="input required" id="fnome">
+
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="inputBox">
                                             <div class="inputText">CPF</div>
-                                            <input id="cpf" type="number" maxlength="11" size="11" name="" class="input required">
+                                            <input id="cpf" type="number" maxlength="11" size="11" name="cpf" class="input required">
                                         </div>
+
 
                                     </div>
                                     <div class="col-sm-6">
@@ -99,7 +109,7 @@
                                     <div class="col-sm-6">
                                         <div class="inputBox">
                                             <div class="inputText">Telefone</div>
-                                            <input type="number" maxlength="12" size="12" name="numero" class="input required ">
+                                            <input type="number" maxlength="12" size="12" name="telefone" class="input required ">
                                         </div>
 
                                     </div>
@@ -107,42 +117,42 @@
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">CEP</div>
-                                        <input id="cep" type="number" maxlength="8" size="8" name="numero" class="input required ">
+                                        <input id="cep" type="number" maxlength="8" size="8" name="cep" class="input required ">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Rua</div>
-                                        <input id="rua" type="text" name="" class="input required ">
+                                        <input id="rua" type="text" name="endereco" class="input required ">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Cidade</div>
-                                        <input id="cidade" type="text" name="" class="input required ">
+                                        <input id="cidade" type="text" name="cidade" class="input required ">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">UF</div>
-                                        <input id="uf" type="text" name="" class="input required ">
+                                        <input id="uf" type="text" name="estado" class="input required ">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Número</div>
-                                        <input  type="number" name="" class="input required ">
+                                        <input  type="number" name="numero" class="input required ">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-12">
                                     <h2>Cadastrar Login/Senha</h2>
                                 </div>
-                                 <div class="col-sm-6">
+                                <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Login</div>
                                         <input  type="text" name="login" class="input required ">
@@ -156,11 +166,23 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
-                                        <div class="inputText">Insira a mais uma vez</div>
-                                        <input  type="password" name="verificar" class="input required ">
+                                        <div class="inputText">Confirmar senha</div>
+                                        <input  type="password" name="confirmarSenha" class="input required ">
                                     </div>
                                 </div>
-                                
+                                <div class="col-sm-6">
+                                    <div class = "inputBox" >
+                                        <label>Função</label>
+                                        <select name = "funcao">
+                                            <option value = "gerente">Gerente </option>
+                                            <option value = "vendedor">Vendedor </option>
+                                             <option value = "estoquista">Estoquista</option>
+                                              <option value = "ti">Técnico</option>
+                                                    
+                                        </select>
+                                    </div>
+                                </div>    
+
                                 <div class="col-sm-12">
                                     <input type="submit" name="" value="Salvar" class="button">
                                 </div>
@@ -188,10 +210,10 @@
 <script>
     $(document).ready(function () {
         $("#registerform").validate({
-            rules:{
-                verificar:{
+            rules: {
+                verificar: {
                     required: true;
-                    equalTo: "#senha"
+                            equalTo: "#senha"
                 }
             }
         });

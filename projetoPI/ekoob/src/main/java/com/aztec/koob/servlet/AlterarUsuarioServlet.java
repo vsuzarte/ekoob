@@ -7,7 +7,7 @@ package com.aztec.koob.servlet;
 
 import com.aztec.koob.dao.UsuarioDAO;
 import com.aztec.koob.model.Usuario;
-import com.aztec.koob.validadores.ValidadorData;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -55,11 +55,11 @@ public class AlterarUsuarioServlet extends HttpServlet {
             String estado = request.getParameter("estado");
             String cidade = request.getParameter("cidade");
             String funcao = request.getParameter("funcao");
-            String data = request.getParameter("dataNasc");
+       
 
-            Date dataSql = ValidadorData.formatarData(data);
+          
 
-            Usuario usuario = new Usuario(0, nome, sobrenome, dataSql, cpf, email, telefone, estado, cidade, endereco, cep, funcao, senha, username);
+            Usuario usuario = new Usuario(0, nome, sobrenome,  cpf, email, telefone, estado, cidade, endereco, cep, funcao, senha, username);
 
             usuario.setNome(nome);
             usuario.setSobrenome(sobrenome);
@@ -73,7 +73,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
             usuario.setUsername(username);
             usuario.setEstado(estado);
             usuario.setCidade(cidade);
-            usuario.setDataNasc(dataSql);
+
 
             try {
                 UsuarioDAO.atualizarUsuario(usuario);
