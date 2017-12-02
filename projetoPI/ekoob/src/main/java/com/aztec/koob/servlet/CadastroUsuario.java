@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.aztec.koob.validadores.ValidadorData;
+import com.aztec.koob.validadores.ValidadorUsuario;
 
 @WebServlet(name = "CadastroUsuario", urlPatterns = {"/cadastro-usuario"})
 public class CadastroUsuario extends HttpServlet {
@@ -33,7 +34,6 @@ public class CadastroUsuario extends HttpServlet {
 
         HttpSession sessao = request.getSession();
 
-     
         if (sessao.getAttribute("usuario") != null) {
 
             request.setAttribute("mensagem", "Usúario cadastrado ! ");
@@ -80,11 +80,8 @@ public class CadastroUsuario extends HttpServlet {
         String estado = request.getParameter("estado");
         String cidade = request.getParameter("cidade");
         String funcao = request.getParameter("funcao");
-        
 
-       
-
-        Usuario usuario = new Usuario(0, nome, sobrenome,  cpf, email, telefone, estado, cidade, endereco, cep, funcao, senha, username);
+        Usuario usuario = new Usuario(0, nome, sobrenome, cpf, email, telefone, estado, cidade, endereco, cep, funcao, senha, username);
 
         usuario.setNome(nome);
         usuario.setSobrenome(sobrenome);
@@ -98,16 +95,31 @@ public class CadastroUsuario extends HttpServlet {
         usuario.setUsername(username);
         usuario.setEstado(estado);
         usuario.setCidade(cidade);
-        
 
-        try {
-            UsuarioDAO.inserirUsuario(usuario);
-        } catch (Exception e) {
-            e.printStackTrace();
+        String erro = "";
+
+        erro = com.aztec.koob.validadores.ValidadorUsuario.validarUsuario(usuario);
+        if (!erro.equals("")) {
+            request.setAttribute("mensagem", erro);
+            RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("/cadastrarUsuario.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            try {
+                UsuarioDAO.inserirUsuario(usuario);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            //cria ou recupera uma sessão ja existente
+            sessao = request.getSession();
+
+            request.setAttribute("mensagem", "Usuário cadastrado ! ");
+            RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("/cadastrarCliente.jsp");
+            dispatcher.forward(request, response);
+
         }
 
-        response.sendRedirect(request.getContextPath() + "/cadastrarUsuario.jsp");
-
     }
-
 }

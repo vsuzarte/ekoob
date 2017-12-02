@@ -5,17 +5,17 @@
  */
 package com.aztec.koob.validadores;
 
-
 import com.aztec.koob.model.Cliente;
-import com.aztec.koob.validadores.ValidadorEmail;
+import com.aztec.koob.model.Usuario;
+import com.sun.tools.javac.resources.compiler;
 
 /**
  *
- * @author gildete
+ * @author Gabriel
  */
-public class ValidadorCliente {
+public class ValidadorUsuario {
 
-    public static String validarCliente(Cliente cliente) {
+    public static String validarUsuario(Usuario cliente) {
 
         String erro = "";
 
@@ -33,29 +33,26 @@ public class ValidadorCliente {
             erro += "Sobrenome muito grande !  \n";
         }
 
-     
         if (cliente.getCpf() == null) {
             erro += "CPF obrigatório \n";
         }
 
-        
-         if (cliente.getCpf().length() < 11) {
+        if (cliente.getCpf().length() < 11) {
             erro += "Número de CPF muito pequeno \n";
         }
-        
+
 
         /*if (ValidadorEmail.validar(cliente.getEmail())) {
             erro += "E-mail obrigatório \n";
         }*/
-
         if (cliente.getTelefone() == null || "".equals(cliente.getTelefone())) {
             erro += "Telefone obrigatório \n";
         }
-        
-         if (cliente.getTelefone().length() < 8) {
+
+        if (cliente.getTelefone().length() < 8) {
             erro += "Número de telefone muito pequeno \n";
         }
-        
+
         if (cliente.getEstado() == null || "".equals(cliente.getEstado())) {
             erro += "Estado obrigatório \n";;
         }
@@ -67,7 +64,7 @@ public class ValidadorCliente {
         if (cliente.getCidade().length() > 30) {
             erro += "Nome da cidade muito grande !  \n";
         }
-      
+
         if (cliente.getEndereco().length() > 30) {
             erro += "Endereço muito grande ! Digite apenas o nome da rua \n";
         }
@@ -75,16 +72,18 @@ public class ValidadorCliente {
         if (cliente.getCep() == null || "".equals(cliente.getCep())) {
             erro += "Cep obrigatório \n";
         }
-        if (cliente.getNumCasa() == null || "".equals(cliente.getNumCasa())) {
-            erro += "Número da casa obrigatório \n";
-        }
-        if (cliente.getNumCasa().length() > 10) {
-            erro += "Número muito grande !  \n";
+
+        Usuario usuario = null;
+
+        try {
+            usuario = com.aztec.koob.dao.UsuarioDAO.procurarUsername(cliente.getUsername());
+        } catch (Exception E) {
+
         }
 
-       
-
+        if (usuario != null) {
+            erro += "Nome de usuário/login já cadastrado ! ";
+        }
         return erro;
     }
-
 }
