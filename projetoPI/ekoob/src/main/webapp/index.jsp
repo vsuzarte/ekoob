@@ -19,14 +19,14 @@
         <div class="loginBox">
             <div class="glass">
                 <img src="logo.png" class="user"/>
-                <h3>Sign in Here</h3>
-                <form>
+                <h3></h3>
+                <form action="/WEB-INF/login" method="post">
                     <div class="inputBox">
-                        <input type="text" name="" placeholder="Username"/>
+                        <input type="text" name="username" placeholder="Usuário"/>
                         <span><i class="fa fa-user" aria-hidden="true"></i></span>
                     </div>
                     <div class="inputBox">
-                        <input type="password" name="" placeholder="Password"/>
+                        <input type="password" name="senha" placeholder="Senha"/>
                         <span><i class="fa fa-lock" aria-hidden="true"></i></span>
                     </div>
                     <input type="submit" name="" value="Login">
