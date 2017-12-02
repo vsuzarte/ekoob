@@ -1,6 +1,6 @@
 <%-- 
-    Document   : cadastroProduto
-    Created on : 02/12/2017, 13:01:39
+    Document   : cadastrarCliente
+    Created on : 02/12/2017, 07:42:41
     Author     : Vitor
 --%>
 
@@ -9,7 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+
+        <title>ekoob</title>
+        <link rel="stylesheet" href="css/homecss.css"/>
+        <link rel="stylesheet" href="css/crudcss.css"/>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
     </head>
     <nav>
         <div class="full-width navbar">
@@ -49,60 +54,42 @@
                                     <div class="col-sm-6">
                                         <div class="inputBox">
                                             <div class="inputText">Autor</div>
-                                            <input id="cpf" type="number" maxlength="11" size="11" name="" class="input required">
+                                            <input type="text" maxlength="30" size="30" name="autor" class="input required">
                                         </div>
 
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="inputBox">
                                             <div class="inputText">Editora</div>
-                                            <input type="text" name="email" class="input required email">
+                                            <input type="text" maxlength="30" size="30" name="editora" class="input required email">
                                         </div>
 
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="inputBox">
-                                            <div class="inputText">Telefone</div>
-                                            <input type="number" maxlength="12" size="12" name="numero" class="input required ">
+                                            <div class="inputText">Ano</div>
+                                            <input type="number" maxlength="4" size="4" name="ano" class="input required ">
                                         </div>
 
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
-                                        <div class="inputText">CEP</div>
-                                        <input id="cep" type="number" maxlength="8" size="8" name="numero" class="input required ">
+                                        <div class="inputText">Estoque</div>
+                                        <input type="number" maxlength="10" size="10" name="estoque" class="input required ">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
-                                        <div class="inputText">Rua</div>
-                                        <input id="rua" type="text" name="" class="input required ">
+                                        <div class="inputText">Preço</div>
+                                        <input type="number" maxlength="10" size="10" name="" class="input required ">
                                     </div>
 
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="inputBox">
-                                        <div class="inputText">Cidade</div>
-                                        <input id="cidade" type="text" name="" class="input required ">
-                                    </div>
 
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="inputBox">
-                                        <div class="inputText">UF</div>
-                                        <input id="uf" type="text" name="" class="input required ">
-                                    </div>
 
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="inputBox">
-                                        <div class="inputText">Número</div>
-                                        <input  type="number" name="" class="input required ">
-                                    </div>
 
-                                </div>
                                 <div class="col-sm-12">
                                     <input type="submit" name="" value="Salvar" class="button">
                                 </div>
@@ -116,4 +103,25 @@
         </div>
     </section>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $(".input").focus(function () {
+        $(this).parent().addClass("focus");
+    }).blur(function () {
+        if ($(this).val() === '') {
+            $(this).parent().removeClass("focus");
+        }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#registerform").validate({
+
+        });
+    });
+</script>
+
+
+
 </html>
