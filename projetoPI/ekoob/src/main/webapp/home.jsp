@@ -17,8 +17,8 @@
             <div class="full-width navbar">
                 <h2 class="brand">e-koob</h2>
                 <ul>
-                    <li><a class="active" href="#">Home</a></li>
-                    <li><a href="#">Cliente</a></li>
+                    <li><a class="active" href="home.jsp">Home</a></li>
+                    <li><a href="cadastrarCliente.jsp">Cliente</a></li>
                     <li><a href="#">Produto</a></li>
                     <li><a href="#">Fornecedor</a></li>
                     <li><a href="#">Usuário</a></li>

@@ -1,41 +1,48 @@
-.formBox{
-    margin-top: 60px;
-    padding: 5px;
-    
-    
+
+body{
+    background: url("back4.jpg");  
 }
+
+.formBox{
+    margin-top: 40px;
+    padding: 5px;
+}
+
 
 h1{
     margin: 0;
     padding: 0;
     text-align: center;
-    margin-bottom: 50px !important;
+    margin-bottom: 20px !important;
     text-transform: uppercase;
-    font-size: 48px;
+    font-size: 40px;
 }
 
 .inputBox{
     position: relative;
     box-sizing: border-box;
-    margin-bottom: 40px;
-        
+    margin-bottom: 35px;
 }
 
 .input{
     position: relative;
     width: 100%;
-    height: 50px;
+    height: 40px;
     background: transparent;
     border: none;
     outline: none;
-    font-size: 24px;
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
     border-bottom: 2px solid rgba(0,0,0,.5);
 }
 
 .inputText{
     position: absolute;
     line-height: 50px;
-    font-size: 24px;
+    font-size: 14px;
+    font-weight: bolder;
+    color: black;
     transition: .5s;
     opacity: .5;
 }
@@ -44,18 +51,16 @@ h1{
     transform: translateY(-30px);
     font-size: 18px;
     opacity: 1;
-    color: #cccccc;
+    color: #ed292a;
 }
 
 .button{
     width: 100%;
-    background: #cccccc;
+    background: #ed292a;
     color: #fff;
     border-radius: 0;
     border: none;
     height: 50px;
     font-size: 24px;
-    
-    
 }
 
