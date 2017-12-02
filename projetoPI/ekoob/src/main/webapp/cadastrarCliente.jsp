@@ -70,7 +70,7 @@
                 <div class="container">
                     <div class="formBox">
 
-                        <form id="registerform" name="registerform">
+                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/cadastro-cliente" method="post">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h1>Cadastrar Cliente</h1>
@@ -84,10 +84,18 @@
                                         </div>
 
                                     </div>
+                                     <div class="col-sm-6">
+                                        <div class="inputBox">
+                                            <div class="inputText">Sobrenome</div>
+                                            <input type="text" maxlength="50" size="50" name="sobrenome" class="input required" id="fnome">
+
+                                        </div>
+
+                                    </div>
                                     <div class="col-sm-6">
                                         <div class="inputBox">
                                             <div class="inputText">CPF</div>
-                                            <input id="cpf" type="number" maxlength="11" size="11" name="" class="input required">
+                                            <input id="cpf" type="number" maxlength="11" size="11" name="cpf" class="input required">
                                         </div>
 
                                     </div>
@@ -101,7 +109,7 @@
                                     <div class="col-sm-6">
                                         <div class="inputBox">
                                             <div class="inputText">Telefone</div>
-                                            <input type="number" maxlength="12" size="12" name="numero" class="input required ">
+                                            <input type="number" maxlength="12" size="12" name="telefone" class="input required ">
                                         </div>
 
                                     </div>
@@ -109,35 +117,35 @@
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">CEP</div>
-                                        <input id="cep" type="number" maxlength="8" size="8" name="numero" class="input required ">
+                                        <input id="cep" type="number" maxlength="8" size="8" name="cep" class="input required ">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Rua</div>
-                                        <input id="rua" type="text" name="" class="input required ">
+                                        <input id="rua" type="text" name="endereco" class="input required ">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Cidade</div>
-                                        <input id="cidade" type="text" name="" class="input required ">
+                                        <input id="cidade" type="text" name="cidade" class="input required ">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">UF</div>
-                                        <input id="uf" type="text" name="" class="input required ">
+                                        <input id="uf" type="text" name="estado" class="input required ">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Número</div>
-                                        <input  type="number" name="" class="input required ">
+                                        <input  type="number" name="numero" class="input required ">
                                     </div>
 
                                 </div>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.aztec.koob.dao.ClienteDAO;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
-import com.aztec.koob.validadores.ValidadorData;
+
 import com.aztec.koob.validadores.ValidadorCliente;
 
 @WebServlet(name = "CadastroCliente", urlPatterns = {"/cadastro-cliente"})
@@ -65,24 +65,19 @@ public class CadastroCliente extends HttpServlet {
 
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
-        String dataNasc = request.getParameter("dataNasc");
-        String genero = request.getParameter("genero");
         String cpf = request.getParameter("cpf");
         String email = request.getParameter("email");
         String telefone = request.getParameter("telefone");
         String estado = request.getParameter("estado");
         String cidade = request.getParameter("cidade");
         String endereco = request.getParameter("endereco");
-        String numCasa = request.getParameter("numCasa");
+        String numCasa = request.getParameter("numero");
         String cep = request.getParameter("cep");
 
-        Date dataSql = ValidadorData.formatarData(dataNasc);
 
-        Cliente cliente = new Cliente(nome, sobrenome, dataSql, cpf, email, telefone, estado, cidade, endereco, cep, numCasa, genero);
+        Cliente cliente = new Cliente(nome, sobrenome,  cpf, email, telefone, estado, cidade, endereco, cep, numCasa);
         cliente.setNome(nome);
         cliente.setSobrenome(sobrenome);
-        cliente.setDataNasc(dataSql);
-        cliente.setGenero(genero);
         cliente.setCpf(cpf);
         cliente.setEmail(email);
         cliente.setTelefone(telefone);
@@ -92,12 +87,13 @@ public class CadastroCliente extends HttpServlet {
         cliente.setNumCasa(numCasa);
         cliente.setCep(cep);
 
-        String erro = ValidadorCliente.validarCliente(cliente);
+       // String erro = ValidadorCliente.validarCliente(cliente);
+       String erro = "";
 
         if (!erro.equals("")) {
             request.setAttribute("mensagem", erro);
             RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("/CadastroCliente.jsp");
+                    = request.getRequestDispatcher("/cadastrarCliente.jsp");
             dispatcher.forward(request, response);
 
         } else {
@@ -113,7 +109,7 @@ public class CadastroCliente extends HttpServlet {
             //cria ou recupera uma sessão ja existente
              sessao = request.getSession();
 
-            response.sendRedirect(request.getContextPath() + "/cadastro-cliente");
+            response.sendRedirect(request.getContextPath() + "/cadastrarCliente.jsp");
         }
 
     }

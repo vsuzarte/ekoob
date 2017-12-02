@@ -33,9 +33,7 @@ public class ValidadorCliente {
             erro += "Digite novamente \n";
         }
 
-        if (cliente.getDataNasc() == null) {
-            erro += "Data de obrigatório \n";
-        }
+     
         if (cliente.getCpf() == null) {
             erro += "CPF obrigatório \n";
         }
@@ -44,9 +42,9 @@ public class ValidadorCliente {
             erro += "Erro! Digite novamente";
         }
 
-        if (ValidadorEmail.validar(cliente.getEmail())) {
+        /*if (ValidadorEmail.validar(cliente.getEmail())) {
             erro += "E-mail obrigatório \n";
-        }
+        }*/
 
         if (cliente.getTelefone() == null || "".equals(cliente.getTelefone())) {
             erro += "Telefone obrigatório \n";
@@ -62,9 +60,7 @@ public class ValidadorCliente {
         if (cliente.getCidade().length() > 30) {
             erro += "Erro! Digite novamente \n";
         }
-        if (cliente.getEndereco() == null || "".equals(cliente.getEndereco())) {
-            erro += "Endereço obrigatório \n";
-        }
+      
         if (cliente.getEndereco().length() > 30) {
             erro += "Erro! Digite novamente \n";
         }

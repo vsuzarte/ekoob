@@ -7,7 +7,7 @@ package com.aztec.koob.dao;
 
 import com.aztec.koob.conexao.ConnectionUtils;
 import com.aztec.koob.model.Cliente;
-import com.aztec.koob.validadores.ValidadorData;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -26,9 +26,9 @@ public class ClienteDAO {
 
         Connection conn = null;
 
-        String sql = "INSERT INTO Cliente(nomeCliente, sobrenomeCliente, dataNasc, cpfCliente, emailCliente, telefoneCliente, estadoCliente,"
-                + " cidadeCliente, enderecoCliente, numCasa, generoCliente, disponivel, cepCliente) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Cliente(nomeCliente, sobrenomeCliente, cpfCliente, emailCliente, telefoneCliente, estadoCliente,"
+                + " cidadeCliente, enderecoCliente, numCasa, disponivel, cepCliente) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement stmt = null;
 
@@ -42,27 +42,24 @@ public class ClienteDAO {
 
             stmt.setString(2, cliente.getSobrenome());
 
-            stmt.setDate(3, cliente.getDataNasc());
+            stmt.setString(3, cliente.getCpf());
 
-            stmt.setString(4, cliente.getCpf());
+            stmt.setString(4, cliente.getEmail());
 
-            stmt.setString(5, cliente.getEmail());
+            stmt.setString(5, cliente.getTelefone());
 
-            stmt.setString(6, cliente.getTelefone());
+            stmt.setString(6, cliente.getEstado());
 
-            stmt.setString(7, cliente.getEstado());
+            stmt.setString(7, cliente.getCidade());
 
-            stmt.setString(8, cliente.getCidade());
+            stmt.setString(8, cliente.getEndereco());
 
-            stmt.setString(9, cliente.getEndereco());
+            stmt.setString(9, cliente.getNumCasa());
 
-            stmt.setString(10, cliente.getNumCasa());
 
-            stmt.setString(11, cliente.getGenero());
+            stmt.setBoolean(10, true);
 
-            stmt.setBoolean(12, true);
-
-            stmt.setString(13, cliente.getCep());
+            stmt.setString(11, cliente.getCep());
 
             stmt.execute();
 
@@ -113,7 +110,7 @@ public class ClienteDAO {
                 int idCliente = result.getInt("idCliente");
                 String nomeCliente = result.getString("nomeCliente");
                 String sobrenomeCliente = result.getString("sobrenomeCliente");
-                Date dataNasc = ValidadorData.formatarData(result.getString("dataNasc"));
+            
                 String cpfCliente = result.getString("cpfCliente");
                 String emailCliente = result.getString("emailCliente");
                 String telefoneCliente = result.getString("telefoneCliente");
@@ -122,12 +119,11 @@ public class ClienteDAO {
                 String enderecoCliente = result.getString("enderecoCliente");
                 String cepCliente = result.getString("cepCliente");
                 String numCasa = Integer.toString(result.getInt("numCasa"));
-                String generoCliente = result.getString("generoCliente");
 
                 Cliente cliente = new Cliente(idCliente, nomeCliente, sobrenomeCliente,
-                        dataNasc, cpfCliente, emailCliente,
+                         cpfCliente, emailCliente,
                         telefoneCliente, estadoCliente, cidadeCliente, enderecoCliente,
-                        cepCliente, numCasa, generoCliente);
+                        cepCliente, numCasa);
 
                 listaClientes.add(cliente);
             }
@@ -196,7 +192,6 @@ public class ClienteDAO {
                 int idCliente = result.getInt("idCliente");
                 String nomeCliente = result.getString("nomeCliente");
                 String sobrenomeCliente = result.getString("sobrenomeCliente");
-                Date dataNasc = ValidadorData.formatarData(result.getString("dataNasc"));
                 String cpfCliente = result.getString("cpfCliente");
                 String emailCliente = result.getString("emailCliente");
                 String telefoneCliente = result.getString("telefoneCliente");
@@ -205,12 +200,11 @@ public class ClienteDAO {
                 String enderecoCliente = result.getString("enderecoCliente");
                 String cepCliente = result.getString("cepCliente");
                 String numCasa = Integer.toString(result.getInt("numCasa"));
-                String generoCliente = result.getString("generoCliente");
 
                 Cliente cliente = new Cliente(idCliente, nomeCliente, sobrenomeCliente,
-                        dataNasc, cpfCliente, emailCliente,
+                       cpfCliente, emailCliente,
                         telefoneCliente, estadoCliente, cidadeCliente, enderecoCliente,
-                        cepCliente, numCasa, generoCliente);
+                        cepCliente, numCasa);
 
                 //Adiciona a instãncia na lista.
                 listaCliente.add(cliente);
@@ -290,8 +284,8 @@ public class ClienteDAO {
         //Monta a string com o comando SQL para atualizar dados na tabela cliente
         //ultilizando os dados do cliente passado por parâmetro.
         //A String ira ser ultilizada pelo prepared statement
-        String sql = "UPDATE cliente SET nomeCliente=?, sobrenomeCliente=?, dataNasc=?, cpfCliente=?, emailCliente=?, telefoneCliente=?, estadoCliente=?, cidadeCliente=?,"
-                + "enderecoCliente=?, cepcliente=?, numCasa=?, generoCliente=?"
+        String sql = "UPDATE cliente SET nomeCliente=?, sobrenomeCliente=?,  cpfCliente=?, emailCliente=?, telefoneCliente=?, estadoCliente=?, cidadeCliente=?,"
+                + "enderecoCliente=?, cepcliente=?, numCasa=?"
                 + "WHERE (idCliente=?)";
 
         //connection para abertura e fechamento.
@@ -316,27 +310,26 @@ public class ClienteDAO {
 
             preparedStatement.setString(2, cliente.getSobrenome());
 
-            preparedStatement.setDate(3, cliente.getDataNasc());
+         
 
-            preparedStatement.setString(4, cliente.getCpf());
+            preparedStatement.setString(3, cliente.getCpf());
 
-            preparedStatement.setString(5, cliente.getEmail());
+            preparedStatement.setString(4, cliente.getEmail());
 
-            preparedStatement.setString(6, cliente.getTelefone());
+            preparedStatement.setString(5, cliente.getTelefone());
 
-            preparedStatement.setString(7, cliente.getEstado());
+            preparedStatement.setString(6, cliente.getEstado());
 
-            preparedStatement.setString(8, cliente.getCidade());
+            preparedStatement.setString(7, cliente.getCidade());
 
-            preparedStatement.setString(9, cliente.getEndereco());
+            preparedStatement.setString(8, cliente.getEndereco());
 
-            preparedStatement.setString(10, cliente.getCep());
+            preparedStatement.setString(9, cliente.getCep());
 
-            preparedStatement.setString(11, cliente.getNumCasa());
+            preparedStatement.setString(10, cliente.getNumCasa());
 
-            preparedStatement.setString(12, cliente.getGenero());
 
-            preparedStatement.setInt(13, cliente.getId());
+            preparedStatement.setInt(11, cliente.getId());
 
             //Exucuta o comando do banco de dados.
             preparedStatement.execute();
@@ -398,7 +391,7 @@ public class ClienteDAO {
                 int idCliente = result.getInt("idCliente");
                 String nomeCliente = result.getString("nomeCliente");
                 String sobrenomeCliente = result.getString("sobrenomeCliente");
-                Date dataNasc = ValidadorData.formatarData(result.getString("dataNasc"));
+               
                 String cpfCliente = result.getString("cpfCliente");
                 String emailCliente = result.getString("emailCliente");
                 String telefoneCliente = result.getString("telefoneCliente");
@@ -407,13 +400,12 @@ public class ClienteDAO {
                 String enderecoCliente = result.getString("enderecoCliente");
                 String cepCliente = result.getString("cepCliente");
                 String numCasa = Integer.toString(result.getInt("numCasa"));
-                String generoCliente = result.getString("generoCliente");
                 
                 
-                Cliente cliente = new Cliente(idCliente, nomeCliente, sobrenomeCliente,
-                        dataNasc, cpfCliente, emailCliente,
+                Cliente cliente = new Cliente(idCliente, nomeCliente, sobrenomeCliente
+                 , cpfCliente, emailCliente,
                         telefoneCliente, estadoCliente, cidadeCliente, enderecoCliente,
-                        cepCliente, numCasa, generoCliente);
+                        cepCliente, numCasa);
 
                 //Retorna o resultado
                 return cliente;
