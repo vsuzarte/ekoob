@@ -65,11 +65,11 @@ public class UsuarioDAO {
 
             stmt.setBoolean(10, true);
 
-            stmt.setString(12, usuario.getCep());
+            stmt.setString(11, usuario.getCep());
 
-            stmt.setString(13, usuario.getUsername());
+            stmt.setString(12, usuario.getUsername());
 
-            stmt.setString(14, usuario.getSenha());
+            stmt.setString(13, usuario.getSenha());
 
             stmt.execute();
 

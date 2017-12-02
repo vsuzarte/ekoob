@@ -80,9 +80,9 @@ public class CadastroUsuario extends HttpServlet {
         String estado = request.getParameter("estado");
         String cidade = request.getParameter("cidade");
         String funcao = request.getParameter("funcao");
-        String data = request.getParameter("dataNasc");
+        
 
-        Date dataSql = ValidadorData.formatarData(data);
+       
 
         Usuario usuario = new Usuario(0, nome, sobrenome,  cpf, email, telefone, estado, cidade, endereco, cep, funcao, senha, username);
 
@@ -106,7 +106,7 @@ public class CadastroUsuario extends HttpServlet {
             e.printStackTrace();
         }
 
-        response.sendRedirect(request.getContextPath() + "/cadastro-usuario");
+        response.sendRedirect(request.getContextPath() + "/cadastrarUsuario.jsp");
 
     }
 
