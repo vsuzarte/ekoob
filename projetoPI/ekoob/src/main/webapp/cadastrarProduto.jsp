@@ -36,7 +36,7 @@
                 <div class="container">
                     <div class="formBox">
 
-                        <form id="registerform" name="registerform">
+                        <form action="${pageContext.request.contextPath}/cadastro-produto" method="post">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h1>Cadastrar Produto</h1>
@@ -82,7 +82,7 @@
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Preço</div>
-                                        <input type="number" maxlength="10" size="10" name="" class="input required ">
+                                        <input type="number" maxlength="10" size="10" name="preco" class="input required ">
                                     </div>
 
                                 </div>

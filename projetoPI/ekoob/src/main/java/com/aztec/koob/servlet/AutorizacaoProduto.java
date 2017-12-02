@@ -52,12 +52,12 @@ public class AutorizacaoProduto implements Filter {
       String funcao = usuario.getFuncao();
       
       
-      if (funcao.equals("estoquista")||funcao.equals("gerente")) {
+      if (funcao.equals("estoquista")/*||funcao.equals("gerente")*/) {
 	chain.doFilter(request, response); // Comando que deixa requisição passar para proximo elemento.
       } else {
 	 request.setAttribute("mensagemErro", "Acesso não autorizado");
                 RequestDispatcher dispatcher
-                        = request.getRequestDispatcher("/HomePage.jsp");
+                        = request.getRequestDispatcher("/home.jsp");
                 dispatcher.forward(request, response);
       }
     } else {

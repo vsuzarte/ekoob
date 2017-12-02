@@ -5,6 +5,7 @@
  */
 package com.aztec.koob.dao;
 
+
 import com.aztec.koob.conexao.ConnectionUtils;
 import com.aztec.koob.model.Usuario;
 import com.aztec.koob.validadores.ValidadorData;
@@ -86,7 +87,7 @@ public class UsuarioDAO {
         }
 
     }
-  
+
     public static List<Usuario> listarUsuario() throws SQLException, Exception {
 
         String sql = "SELECT * FROM Usuario WHERE (DISPONIVEL=?)";
@@ -386,9 +387,11 @@ public class UsuarioDAO {
             preparedStatement = connection.prepareStatement(sql);
 
             //Configura os parâmetros do PreparedSatamente.
-            //cada preparedStatement ira ocupar a interrogação na instrução SQL.
-            preparedStatement.setString(1, username);
-            
+      
+                preparedStatement = connection.prepareStatement(sql);
+                   
+                preparedStatement.setString(1, username);
+         
 
             //Executa a consulta SQL no banco de dados
             result = preparedStatement.executeQuery();
@@ -397,7 +400,6 @@ public class UsuarioDAO {
 
                 Usuario usuario = new Usuario();
 
-               
                 int idUsuario = result.getInt("idUsuario");
                 String nomeUsuario = result.getString("nomeUsuario");
                 String sobrenomeUsuario = result.getString("sobrenomeUsuario");
@@ -453,7 +455,6 @@ public class UsuarioDAO {
 
         }
 
-        
         return null;
     }
 }

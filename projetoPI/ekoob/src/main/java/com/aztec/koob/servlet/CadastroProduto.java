@@ -71,7 +71,7 @@ public class CadastroProduto extends HttpServlet {
         String autor = request.getParameter("autor");
         String editora = request.getParameter("editora");
         String ano = request.getParameter("ano");
-        Integer quantidade = Integer.parseInt(request.getParameter("qtd"));
+        Integer quantidade = Integer.parseInt(request.getParameter("estoque"));
         double preco = Double.parseDouble(request.getParameter("preco"));
 
         Produto produto = new Produto(nome, autor, editora, ano, quantidade, preco);

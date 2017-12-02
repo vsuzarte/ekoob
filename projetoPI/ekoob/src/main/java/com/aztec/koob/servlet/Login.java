@@ -53,7 +53,11 @@ public class Login extends HttpServlet {
         if (senha.equals(usuario.getSenha())) {
             HttpSession sessao = request.getSession();
             sessao.setAttribute("usuario", usuario);
+            String funcao = usuario.getFuncao();
+            
             response.sendRedirect(request.getContextPath() + "/home.jsp");
+            
+
         }
     }
 }
