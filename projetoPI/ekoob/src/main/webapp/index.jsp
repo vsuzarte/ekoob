@@ -20,7 +20,7 @@
             <div class="glass">
                 <img src="logo.png" class="user"/>
                 <h3></h3>
-                <form action="/WEB-INF/login" method="post">
+                <form action="${pageContext.request.contextPath}/login" method="post">
                     <div class="inputBox">
                         <input type="text" name="username" placeholder="Usuário"/>
                         <span><i class="fa fa-user" aria-hidden="true"></i></span>

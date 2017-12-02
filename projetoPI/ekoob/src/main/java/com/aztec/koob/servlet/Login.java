@@ -25,7 +25,7 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/WEB-INF/index.jsp");
+                = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -53,7 +53,7 @@ public class Login extends HttpServlet {
         if (senha.equals(usuario.getSenha())) {
             HttpSession sessao = request.getSession();
             sessao.setAttribute("usuario", usuario);
-            response.sendRedirect(request.getContextPath() + "/HomePage.jsp");
+            response.sendRedirect(request.getContextPath() + "/home.jsp");
         }
     }
 }
