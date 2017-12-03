@@ -5,8 +5,8 @@
  */
 package com.aztec.koob.servlet;
 
-import com.aztec.koob.dao.UsuarioDAO;
-import com.aztec.koob.model.Usuario;
+import com.aztec.koob.dao.ProdutoDAO;
+import com.aztec.koob.model.Produto;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -19,26 +19,26 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author guilherme.gcosta6
+ * @author Vitor
  */
-@WebServlet(name = "ConsultarUsuario", urlPatterns = {"/consultar-usuario"})
-public class ConsultarUsuario extends HttpServlet {
+@WebServlet(name = "ConsultarProdutoVenda", urlPatterns = {"/consultar-produto-venda"})
+public class ConsultarProdutoVenda extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         HttpSession sessao = request.getSession();
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        List<Usuario> listaUsuario;
+        
+        List<Produto> listaProduto;
         HttpSession sessao = request.getSession();
         request.setAttribute("usuario", sessao.getAttribute("usuario"));
+        
 
         if (sessao == null || sessao.getAttribute("usuario") == null) {
             request.setAttribute("mensagemErro", "Você precisa logar ! ");
@@ -52,24 +52,28 @@ public class ConsultarUsuario extends HttpServlet {
 
             String nome = request.getParameter("nome");
 
-            listaUsuario = UsuarioDAO.procurarUsuario(nome);
-            request.setAttribute("listaUsuario", listaUsuario);
+            listaProduto = ProdutoDAO.procurarProduto(nome);
+            request.setAttribute("listaProduto", listaProduto);
 
             if (nome == null || nome.equals("")) {
-                try {
-                    listaUsuario = UsuarioDAO.listarUsuario();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                request.setAttribute("listaUsuario", nome);
+                listaProduto = ProdutoDAO.listarProduto();
+                request.setAttribute("listaProduto", listaProduto);
             }
 
-            sessao.setAttribute("listaUsuario", listaUsuario);
-            response.sendRedirect(request.getContextPath() + "/consultarUsuario.jsp");
+            
+            sessao.setAttribute("listaProduto", listaProduto);
+            response.sendRedirect(request.getContextPath() + "/consultarProduto.jsp");
+            
+            //this.getServletContext().getRequestDispatcher("/consultarProduto.jsp").forward(request, response);
+            //response.sendRedirect(request.getContextPath() + "/consultarProduto.jsp");
 
+            //RequestDispatcher dispatcher = request.getRequestDispatcher("consultarProduto.jsp");
+            //dispatcher.forward(request, response);
         } catch (Exception e) {
         }
 
+        
+        
     }
 
 }

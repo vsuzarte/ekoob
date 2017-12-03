@@ -1,13 +1,14 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.aztec.koob.servlet;
 
-import com.aztec.koob.dao.UsuarioDAO;
-import com.aztec.koob.model.Usuario;
+import com.aztec.koob.dao.ClienteDAO;
+import com.aztec.koob.model.Cliente;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,10 +20,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author guilherme.gcosta6
+ * @author Vitor
  */
-@WebServlet(name = "ConsultarUsuario", urlPatterns = {"/consultar-usuario"})
-public class ConsultarUsuario extends HttpServlet {
+@WebServlet(name = "ConsultarclienteVenda", urlPatterns = {"/consultarClienteVenda"})
+public class ConsultarClienteVenda extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -30,15 +31,22 @@ public class ConsultarUsuario extends HttpServlet {
 
         HttpSession sessao = request.getSession();
 
+       
+
+
+        /*RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/WEB-INF/consultarCliente.jsp");
+        dispatcher.forward(request, response);*/
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Usuario> listaUsuario;
+        List<Cliente> listaClientes;
         HttpSession sessao = request.getSession();
         request.setAttribute("usuario", sessao.getAttribute("usuario"));
+        
 
         if (sessao == null || sessao.getAttribute("usuario") == null) {
             request.setAttribute("mensagemErro", "Você precisa logar ! ");
@@ -52,21 +60,19 @@ public class ConsultarUsuario extends HttpServlet {
 
             String nome = request.getParameter("nome");
 
-            listaUsuario = UsuarioDAO.procurarUsuario(nome);
-            request.setAttribute("listaUsuario", listaUsuario);
+            listaClientes = ClienteDAO.procurarCliente(nome);
+            request.setAttribute("listaClientes", listaClientes);
 
             if (nome == null || nome.equals("")) {
-                try {
-                    listaUsuario = UsuarioDAO.listarUsuario();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                request.setAttribute("listaUsuario", nome);
+                listaClientes = ClienteDAO.listarCliente();
+                request.setAttribute("listaClientes", listaClientes);
             }
 
-            sessao.setAttribute("listaUsuario", listaUsuario);
-            response.sendRedirect(request.getContextPath() + "/consultarUsuario.jsp");
+            sessao.setAttribute("listaClientes", listaClientes);
+            response.sendRedirect(request.getContextPath() + "/venda.jsp");
 
+            //RequestDispatcher dispatcher = request.getRequestDispatcher("clienteConsultado.jsp");
+            //dispatcher.forward(request, response);
         } catch (Exception e) {
         }
 
