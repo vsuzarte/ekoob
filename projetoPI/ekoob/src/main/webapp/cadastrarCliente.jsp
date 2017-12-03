@@ -73,7 +73,7 @@
         </div>
     </nav>
     <body>
-    <di>
+    <div>
         <c:if test="${not empty mensagem}">
             <alert><c:out value="${mensagem}" /></alert>
             </c:if> 

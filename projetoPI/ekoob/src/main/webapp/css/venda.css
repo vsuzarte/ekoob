@@ -139,3 +139,41 @@ select {
     font-size: 20px;
 }
 
+#bodyvenda{
+    margin:0;
+    padding: 0;
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+
+.centro input[type="text"], input[type="number"]
+{
+    border: none;
+    border-bottom: 2px solid;
+    outline: none;
+    height: 40px;
+    color: black;
+    background: transparent;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.centro input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 35px;
+    background: #ed292a;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.input span{
+    position: absolute;
+    top: 10px;
+}
+
+
+
+
