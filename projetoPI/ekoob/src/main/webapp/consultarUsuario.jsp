@@ -26,7 +26,7 @@
     </head>
     <nav>
         <div  class="full-width navbar">
-             <a class="navbar-brand" href="home.jsp"><img class="logo" src="logo.png" /></a>
+            <a class="navbar-brand" href="home.jsp"><img class="logo" src="logo.png" /></a>
             <ul>
                 <li><a class="active" href="home.jsp">Home</a></li>
 
@@ -59,7 +59,7 @@
                 <c:if test = "${sessionScope.usuario.getFuncao().equals('gerente')}">
                     <li><a id = "relatorio" href="relatorio.jsp">Relatório</a></li>
                     </c:if>
-
+                <li class="active"><a href="Logout">Logout</a></li>
 
 
 
@@ -97,7 +97,7 @@
 
             </div>
         </section>
-                            <br><br><br>    
+        <br><br><br>    
         <table class="table">
             <thead>
                 <tr>

@@ -60,6 +60,7 @@
                 <c:if test = "${sessionScope.usuario.getFuncao().equals('gerente')}">
                     <li><a id = "relatorio" href="relatorio.jsp">Relatório</a></li>
                     </c:if>
+                <li class="active"><a href="Logout">Logout</a></li>
 
 
 
@@ -139,51 +140,51 @@
                                     </div>
 
                                 </div>
-                            
-                            <div class="col-sm-6">
-                                <div class="inputBox">
-                                    <div class="inputText">CEP</div>
-                                    <input id="cep" type="number" maxlength="8" size="8" name="cep" class="input required ">
-                                </div>
 
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="inputBox">
-                                    <div class="inputText">Rua</div>
-                                    <input id="rua" type="text" name="endereco" class="input required ">
-                                </div>
+                                <div class="col-sm-6">
+                                    <div class="inputBox">
+                                        <div class="inputText">CEP</div>
+                                        <input id="cep" type="number" maxlength="8" size="8" name="cep" class="input required ">
+                                    </div>
 
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="inputBox">
-                                    <div class="inputText">Cidade</div>
-                                    <input id="cidade" type="text" name="cidade" class="input required ">
                                 </div>
+                                <div class="col-sm-6">
+                                    <div class="inputBox">
+                                        <div class="inputText">Rua</div>
+                                        <input id="rua" type="text" name="endereco" class="input required ">
+                                    </div>
 
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="inputBox">
-                                    <div class="inputText">UF</div>
-                                    <input id="uf" type="text" name="estado" class="input required ">
                                 </div>
+                                <div class="col-sm-6">
+                                    <div class="inputBox">
+                                        <div class="inputText">Cidade</div>
+                                        <input id="cidade" type="text" name="cidade" class="input required ">
+                                    </div>
 
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="inputBox">
-                                    <div class="inputText">Número</div>
-                                    <input  type="number" name="numero" class="input required ">
                                 </div>
+                                <div class="col-sm-6">
+                                    <div class="inputBox">
+                                        <div class="inputText">UF</div>
+                                        <input id="uf" type="text" name="estado" class="input required ">
+                                    </div>
 
-                            </div>
-                            <div class="col-sm-12">
-                                <input type="submit" name="" value="Salvar" class="button">
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="inputBox">
+                                        <div class="inputText">Número</div>
+                                        <input  type="number" name="numero" class="input required ">
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-12">
+                                    <input type="submit" name="" value="Salvar" class="button">
+                                </div>
                             </div>
                         </div>
-                </div>
-                </form>
+                    </form>
 
+                </div>
             </div>
-        </div>
 
         </div>
     </section>

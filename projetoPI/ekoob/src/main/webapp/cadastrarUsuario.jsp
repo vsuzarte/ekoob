@@ -59,6 +59,7 @@
                 <c:if test = "${sessionScope.usuario.getFuncao().equals('gerente')}">
                     <li><a id = "relatorio" href="relatorio.jsp">Relatório</a></li>
                     </c:if>
+                <li class="active"><a href="Logout">Logout</a></li>
 
 
 

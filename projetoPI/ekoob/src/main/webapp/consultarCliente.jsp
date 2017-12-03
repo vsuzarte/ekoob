@@ -26,7 +26,7 @@
     </head>
     <nav>
         <div  class="full-width navbar">
-             <a class="navbar-brand" href="home.jsp"><img class="logo" src="logo.png" /></a>
+            <a class="navbar-brand" href="home.jsp"><img class="logo" src="logo.png" /></a>
             <ul>
                 <li><a class="active" href="home.jsp">Home</a></li>
 
@@ -59,6 +59,7 @@
                 <c:if test = "${sessionScope.usuario.getFuncao().equals('gerente')}">
                     <li><a id = "relatorio" href="relatorio.jsp">Relatório</a></li>
                     </c:if>
+                <li class="active"><a href="Logout">Logout</a></li>
 
 
 
@@ -97,31 +98,31 @@
 
             </div>
         </section>
-                            <br><br><br>    
+        <br><br><br>    
         <table class="table">
-            
+
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Alterar</th>
+                <th scope="col">Excluir</th>
+            </tr>
+
+            <c:forEach items="${listaClientes}" var="clientes">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">CPF</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Alterar</th>
-                    <th scope="col">Excluir</th>
+                    <td><c:out value="${clientes.id}"/></td>
+                    <td><c:out value="${clientes.nome}"/></td>
+                    <td><c:out value="${clientes.cpf}"/></td>
+                    <td><c:out value="${clientes.email}"/></td>
+                    <td><c:out value="${clientes.telefone}"/></td>
+                    <td><a href="ExcluirClienteServlet?idCliente=${clientes.id}">Excluir</a></td>
+                    <td><a href="AlterarClienteServlet?idCliente=${clientes.id}">Alterar</a></td>
                 </tr>
-            
-                <c:forEach items="${listaClientes}" var="clientes">
-                <tr>
-                        <td><c:out value="${clientes.id}"/></td>
-                        <td><c:out value="${clientes.nome}"/></td>
-                        <td><c:out value="${clientes.cpf}"/></td>
-                        <td><c:out value="${clientes.email}"/></td>
-                        <td><c:out value="${clientes.telefone}"/></td>
-                        <td><a href="ExcluirClienteServlet?idCliente=${clientes.id}">Excluir</a></td>
-                        <td><a href="AlterarClienteServlet?idCliente=${clientes.id}">Alterar</a></td>
-                    </tr>
-                </c:forEach>
-            
+            </c:forEach>
+
         </table>
 
     </body>
