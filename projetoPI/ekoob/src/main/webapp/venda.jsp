@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -73,7 +74,7 @@
                         <div id="box" id="pagina" class="container-fluid">
                             <div class="container">
                                 <div class="formBox">
-                                    <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/consultarCliente" method="post">
+                                    <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/consultarClienteVenda" method="post">
                                         <div class="row">
                                             <div class="row">
                                                 <div class="col-sm-6">
@@ -122,7 +123,7 @@
             <div id="box" id="pagina" class="container-fluid">
                 <div class="container">
                     <div class="formBox">
-                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/consultar-produto" method="post">
+                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/consultar-produto-venda" method="post">
                             <div class="row">
                                 <div class="row">
                                     <div class="col-sm-6">

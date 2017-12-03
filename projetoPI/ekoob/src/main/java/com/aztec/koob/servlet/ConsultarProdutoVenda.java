@@ -62,7 +62,7 @@ public class ConsultarProdutoVenda extends HttpServlet {
 
             
             sessao.setAttribute("listaProduto", listaProduto);
-            response.sendRedirect(request.getContextPath() + "/consultarProduto.jsp");
+            response.sendRedirect(request.getContextPath() + "/venda.jsp");
             
             //this.getServletContext().getRequestDispatcher("/consultarProduto.jsp").forward(request, response);
             //response.sendRedirect(request.getContextPath() + "/consultarProduto.jsp");
