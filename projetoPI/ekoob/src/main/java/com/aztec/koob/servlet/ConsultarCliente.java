@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Vitor
  */
-@WebServlet(name = "Consultarc", urlPatterns = {"/consultarCliente"})
+@WebServlet(name = "Consultarcliente", urlPatterns = {"/consultarCliente"})
 public class ConsultarCliente extends HttpServlet {
 
     @Override
@@ -69,7 +69,7 @@ public class ConsultarCliente extends HttpServlet {
             }
 
             sessao.setAttribute("listaClientes", listaClientes);
-            response.sendRedirect(request.getContextPath() + "/ConsultarCliente.jsp");
+            response.sendRedirect(request.getContextPath() + "/consultarCliente.jsp");
 
             //RequestDispatcher dispatcher = request.getRequestDispatcher("clienteConsultado.jsp");
             //dispatcher.forward(request, response);
