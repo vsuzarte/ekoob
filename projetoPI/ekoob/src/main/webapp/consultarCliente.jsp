@@ -75,7 +75,7 @@
             <div id="box" id="pagina" class="container-fluid">
                 <div class="container">
                     <div class="formBox">
-                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/consultar-cliente" method="post">
+                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/consultarCliente" method="post">
                             <div class="row">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -86,7 +86,7 @@
                                     </div>
 
                                     <div class="col-sm-12">
-                                        <input type="submit" name="" value="Pesquisar" class="button">
+                                        <input type="submit" name="pesquisar" value="Pesquisar" class="button">
                                     </div>
                                 </div>
                             </div>
@@ -99,37 +99,30 @@
         </section>
                             <br><br><br>    
         <table class="table">
-            <thead>
+            
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Username</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Alterar</th>
+                    <th scope="col">Excluir</th>
                 </tr>
-            </thead>
-            <tbody>
+            
+                <c:forEach items="${listaClientes}" var="clientes">
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
+                        <td><c:out value="${clientes.id}"/></td>
+                        <td><c:out value="${clientes.nome}"/></td>
+                        <td><c:out value="${clientes.cpf}"/></td>
+                        <td><c:out value="${clientes.email}"/></td>
+                        <td><c:out value="${clientes.telefone}"/></td>
+                        <td><a href="ExcluirClienteServlet?idCliente=${clientes.id}">Excluir</a></td>
+                        <td><a href="AlterarClienteServlet?idCliente=${clientes.id}">Alterar</a></td>
+                    </tr>
+                </c:forEach>
+            
         </table>
-
-
 
     </body>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
