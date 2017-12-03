@@ -12,52 +12,128 @@
 
         <title>ekoob</title>
         <link rel="stylesheet" href="css/homecss.css"/>
-        <link rel="stylesheet" href="css/crudcss.css"/>
+        <link rel="stylesheet" href="css/venda.css"/>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     </head>
     <nav>
         <div class="full-width navbar">
-             <a class="navbar-brand" href="home.jsp"><img class="logo" src="logo.png" /></a>
+            <a class="navbar-brand" href="home.jsp"><img class="logo" src="logo.png" /></a>
             <ul>
                 <li><a class="active" href="home.jsp">Home</a></li>
-                <li><a href="cadastrarCliente.jsp">Cliente</a></li>
-                <li><a href="cadastrarProduto.jsp">Produto</a></li>
-                <li><a href="cadastrarUsuario.jsp">Usuário</a></li>
-                <li class="active"><a href="venda.jsp">Venda</a></li>
-                <li><a href="relatorio.jsp">Relatório</a></li>
+
+                <c:if test = "${sessionScope.usuario.getFuncao().equals('vendedor')
+                                ||sessionScope.usuario.getFuncao().equals('estoquista') 
+                                || sessionScope.usuario.getFuncao().equals('gerente')}">
+                    <li><a id ="produto" href = "cadastrarProduto.jsp">Produto</a></li>
+                </c:if>
+
+                <c:if test = "${sessionScope.usuario.getFuncao().equals('vendedor')
+                                || sessionScope.usuario.getFuncao().equals('gerente')}">
+
+                    <li class="active"><a id ="cliente" href="cadastrarCliente.jsp">Cliente</a></li>
+
+                </c:if>
+
+                <c:if test = "${sessionScope.usuario.getFuncao().equals('ti') 
+                                || sessionScope.usuario.getFuncao().equals('gerente')}">
+
+                    <li><a id ="usuario"href="cadastrarUsuario.jsp">Usuário</a></li>
+
+                </c:if>
+
+                <c:if test = "${sessionScope.usuario.getFuncao().equals('vendedor')
+
+                                || sessionScope.usuario.getFuncao().equals('gerente')}">
+                    <li><a id ="venda"href="venda.jsp">Venda</a></li>
+                </c:if>
+
+                <c:if test = "${sessionScope.usuario.getFuncao().equals('gerente')}">
+                    <li><a id = "relatorio" href="relatorio.jsp">Relatório</a></li>
+                </c:if>
+                <li class="active"><a href="Logout">Logout</a></li>
+
             </ul>
             <div style="clear: both"></div>
         </div>
     </nav>
     <body>
-        <section>
-            <div id="box" class="container-fluid">
-                <div id="pagina" class="container">
-                    <div class="formBox">
+        <div class="container">
+            <div class="row">
+                <div id="divesquerda" class="col-md-3">
+                    <section>
+                        <div id="box" id="pagina" class="container-fluid">
+                            <div class="container">
+                                <div class="formBox">
+                                    <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/consultarCliente" method="post">
+                                        <div class="row">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="inputBox">
+                                                        <div class="inputText">Pesquisar Cliente</div>
+                                                        <input type="text" maxlength="50" size="50" name="nome" class="input required" id="fnome">
+                                                    </div>
+                                                </div>
 
-                        <form id="registerform" name="registerform">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <h1>Venda</h1>
+                                                <div class="col-sm-12">
+                                                    <input type="submit" name="pesquisar" value="Pesquisar" class="button">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
                                 </div>
+                            </div>
+
+                        </div>
+                    </section>
+                    <br><br><br>    
+                    <table class="table">
+
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">CPF</th>
+                        </tr>
+
+                        <c:forEach items="${listaClientes}" var="clientes">
+                            <tr>
+                                <td><c:out value="${clientes.id}"/></td>
+                            <td><c:out value="${clientes.nome}"/></td>
+                            <td><c:out value="${clientes.cpf}"/></td>
+                            </tr>
+                        </c:forEach>
+
+                    </table>
+                </div>
+                <div id="divmeio" class="col-md-6">
+                    One of three columns
+                </div>
+                <div id="divdireita" class="col-md-3">
+                     <section>
+            <div id="box" id="pagina" class="container-fluid">
+                <div class="container">
+                    <div class="formBox">
+                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/consultar-produto" method="post">
+                            <div class="row">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="inputBox">
-                                            <div class="inputText">ID Produto</div>
+                                            <div class="inputText">Pesquisar Produto</div>
                                             <input type="text" maxlength="50" size="50" name="nome" class="input required" id="fnome">
-
-                                        </div>
-
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="inputBox">
-                                            <div class="inputText">Quantidade</div>
-                                            <input id="cpf" type="number" maxlength="11" size="11" name="" class="input required">
                                         </div>
                                     </div>
+
                                     <div class="col-sm-12">
-                                        <input type="submit" name="" value="Salvar" class="button">
+                                        <input type="submit" name="" value="Pesquisar" class="button">
                                     </div>
                                 </div>
                             </div>
@@ -68,19 +144,32 @@
 
             </div>
         </section>
-        <br><br><br><hr>
-        <section>
-            <div class="col-sm-6">
-                <div class="inputBox">
-                    <div class="inputText">Pesquisa</div>
-                    <input type="texte" maxlength="11" size="11" name="" class="input required">
+        <br><br><br>    
+        <table class="table">
+
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Estoque</th>
+            </tr>
+
+            <c:forEach items="${listaProduto}" var="produto">
+                <tr>
+                    <td><c:out value="${produto.id}"/></td>
+                    <td><c:out value="${produto.nome}"/></td>
+                    <td><c:out value="${produto.preco}"/></td>
+                    <td><c:out value="${produto.quantidade}"/></td>
+                </tr>
+            </c:forEach>
+
+        </table>
+
                 </div>
             </div>
-            <div class="col-sm-6">
-                <input type="submit" name="" value="Salvar" class="button">
-            </div>
-        </section>
+        </div>
     </body>
+
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <script type="text/javascript">
