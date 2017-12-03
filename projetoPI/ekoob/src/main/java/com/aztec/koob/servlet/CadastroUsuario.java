@@ -99,6 +99,11 @@ public class CadastroUsuario extends HttpServlet {
         String erro = "";
 
         erro = com.aztec.koob.validadores.ValidadorUsuario.validarUsuario(usuario);
+
+        if (!senha.equals(confirmaSenha)) {
+            erro += "As senhas não são iguais !\n ";
+        }
+
         if (!erro.equals("")) {
             request.setAttribute("mensagem", erro);
             RequestDispatcher dispatcher

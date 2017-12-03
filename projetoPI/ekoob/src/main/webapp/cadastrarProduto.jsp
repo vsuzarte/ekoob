@@ -71,6 +71,9 @@
         </div>
     </nav>
     <body>
+        <c:if test="${not empty mensagem}">
+            <alert><c:out value="${mensagem}" /></alert>
+            </c:if> 
         <div  id="pagina" class="container">
             <div class="row">
                 <div class="col-xs-12">
