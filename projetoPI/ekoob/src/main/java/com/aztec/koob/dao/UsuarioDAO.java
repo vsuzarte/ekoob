@@ -297,7 +297,7 @@ public class UsuarioDAO {
         //ultilizando os dados do cliente passado por parâmetro.
         //A String ira ser ultilizada pelo prepared statement
         String sql = "UPDATE usuario SET nomeUsuario=?, sobrenomeUsuario=?, cpfUsuario=?, emailUsuario=?, telefoneUsuario=?, estadoUsuario=?, cidadeUsuario=?,"
-                + "enderecoUsuario=?, cepUsuario=?, senha=?, cargo=?"
+                + "enderecoUsuario=?, cepUsuario=?, senha=?, funcao=?"
                 + "WHERE (idUsuario=?)";
 
         //connection para abertura e fechamento.

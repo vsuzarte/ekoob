@@ -96,7 +96,7 @@
                 <div class="container">
                     <div class="formBox">
 
-                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/tela-editar-usuario" method="post">
+                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/editar-usuario" method="post">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h1>Editar Usuário</h1>
@@ -105,6 +105,7 @@
                                     <div class="col-sm-6">
                                         <div class="inputBox">
                                             <div class="inputText">Nome</div>
+                                            <input type="hidden" maxlength="50" size="50" name="idUsuario" class="input required" id="fnome" value = "${idUsuario}">
                                             <input type="text" maxlength="50" size="50" name="nome" class="input required" id="fnome" value = "${nome}">
 
                                         </div>
@@ -184,7 +185,7 @@
                                     <div class="col-sm-6">
                                         <div class="inputBox">
                                             <div class="inputText">Login</div>
-                                            <input  type="text" name="login" class="input required " value = "${username}">
+                                            <input  type="text" name="username" class="input required " value = "${username}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -196,7 +197,7 @@
                                     <div class="col-sm-6">
                                         <div class="inputBox">
                                             <div class="inputText">Confirmar senha</div>
-                                            <input  type="password" name="confirmarSenha" class="input required ">
+                                            <input  type="password" name="confirmarSenha" class="input required " >
                                         </div>
                                     </div>
                                     <div class="col-sm-6">

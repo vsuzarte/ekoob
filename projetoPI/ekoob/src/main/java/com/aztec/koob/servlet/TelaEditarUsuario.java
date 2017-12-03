@@ -40,7 +40,7 @@ public class TelaEditarUsuario extends HttpServlet {
             cliente = UsuarioDAO.obterUsuario(id);
             
             
-        request.setAttribute("id", cliente.getId());
+        request.setAttribute("idUsuario", cliente.getId());
         request.setAttribute("nome", cliente.getNome());
         request.setAttribute("sobrenome", cliente.getSobrenome());
         request.setAttribute("cpf", cliente.getCpf());
