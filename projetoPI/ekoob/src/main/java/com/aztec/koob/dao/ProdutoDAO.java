@@ -45,12 +45,10 @@ public class ProdutoDAO {
             stmt.setString(4, produto.getEditora());
 
             stmt.setDouble(5, produto.getPreco());
-            
+
             stmt.setString(6, produto.getAno());
 
             stmt.setBoolean(7, true);
-
-            
 
             stmt.execute();
 
@@ -270,8 +268,6 @@ public class ProdutoDAO {
 
             preparedStatement.setDouble(6, produto.getPreco());
 
-
-
             preparedStatement.setInt(8, produto.getId());
 
             //Exucuta o comando do banco de dados.
@@ -290,6 +286,84 @@ public class ProdutoDAO {
             }
 
         }
+
+    }
+
+    public static Produto obterProduto(Integer id) throws SQLException, Exception {
+
+        //Monta a string com o comando SQL para procurar um cliente de acordo com o ID,
+        //passado por parâmetro.
+        //A String ira ser ultilizada pelo prepared statement
+        String sql = "SELECT * FROM produto WHERE (idProduto=? AND disponivel=?)";
+
+        //connection para abertura e fechamento.
+        Connection connection = null;
+
+        //PreparedStatement para os comandos SQL e fechamento do mesmo.
+        PreparedStatement preparedStatement = null;
+
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
+
+        try {
+
+            //chama a classe criada ConnectionUtils.
+            //abre a conexão com o banco de dados.
+            connection = ConnectionUtils.getConnection();
+
+            //cria um statement para execução de instruções SQL.
+            preparedStatement = connection.prepareStatement(sql);
+
+            //Configura os parâmetros do PreparedSatamente.
+            //cada preparedStatement ira ocupar a interrogação na instrução SQL.
+            preparedStatement.setInt(1, id);
+            preparedStatement.setBoolean(2, true);
+
+            //Executa a consulta SQL no banco de dados.
+            result = preparedStatement.executeQuery();
+
+            //Verifica se há pelo menos um resultado
+            if (result.next()) {
+
+                //Cria a instância Cliente, pega os valores obtidos pela consulta ao banco,
+                //e a popula.
+                id = result.getInt("idProduto");
+                String nome = result.getString("nomeProduto");
+                String autor = result.getString("autor");
+                String editora = result.getString("editora");
+                int estoque = result.getInt("quantidade");
+                String ano = result.getString("ano");
+                Double preco = result.getDouble("valorproduto");
+
+                Produto cliente = new Produto(id, nome, autor, editora, ano, estoque, preco);
+
+                //Retorna o resultado
+                return cliente;
+            }
+
+        } finally {
+
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+
+        }
+
+        //Se chegamos aqui, não foi encontrado nenhum cliente porque
+        //a pesquisa não teve resultados
+        //Neste caso, não há um cliente a retornar, então retornamos "null"
+        return null;
 
     }
 

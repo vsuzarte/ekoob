@@ -118,7 +118,7 @@
                     <td><c:out value="${produto.preco}"/></td>
                     <td><c:out value="${produto.quantidade}"/></td>
                     <td><a href="ExcluirProdutoServlet?idProduto=${produto.id}">Excluir</a></td>
-                    <td><a href="AlterarClienteServlet?idProduto=${produto.id}">Alterar</a></td>
+                    <td><a href="tela-editar-produto?idProduto=${produto.id}">Alterar</a></td>
                 </tr>
             </c:forEach>
 
