@@ -235,8 +235,8 @@ public class ProdutoDAO {
     public static void atualizarProduto(Produto produto) throws SQLException, Exception {
 
         String sql = "UPDATE produto SET nomeProduto=?, quantidade=?, "
-                + "autor=?, editora=?, ano=?, valorProduto=?,"
-                + " WHERE (idCliente=?)";
+                + "autor=?, editora=?, ano=?, valorProduto=?"
+                + " WHERE (idProduto=?)";
 
         //connection para abertura e fechamento.
         Connection connection = null;
@@ -268,7 +268,7 @@ public class ProdutoDAO {
 
             preparedStatement.setDouble(6, produto.getPreco());
 
-            preparedStatement.setInt(8, produto.getId());
+            preparedStatement.setInt(7, produto.getId());
 
             //Exucuta o comando do banco de dados.
             preparedStatement.execute();

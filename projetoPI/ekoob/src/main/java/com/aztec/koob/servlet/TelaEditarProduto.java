@@ -38,6 +38,7 @@ public class TelaEditarProduto extends HttpServlet {
         try {
 
             cliente = ProdutoDAO.obterProduto(id);
+            cliente.setId(id);
             
             
         request.setAttribute("idProduto", cliente.getId());
