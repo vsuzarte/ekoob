@@ -75,7 +75,7 @@
             <div id="box" id="pagina" class="container-fluid">
                 <div class="container">
                     <div class="formBox">
-                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/consultar-produto" method="post">
+                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/consultar-usuario" method="post">
                             <div class="row">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -97,36 +97,35 @@
 
             </div>
         </section>
-        <br><br><br>    
+         <br><br><br>    
         <table class="table">
-            <thead>
+
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                 <th scope="col">Função</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefone</th>
+                 <th scope="col">Username</th>
+                <th scope="col">Alterar</th>
+                <th scope="col">Excluir</th>
+            </tr>
+
+            <c:forEach items="${listaUsuario}" var="usuario">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Username</th>
+                    <td><c:out value="${usuario.id}"/></td>
+                    <td><c:out value="${usuario.nome}"/></td>
+                    <td><c:out value="${usuario.cpf}"/></td>
+                    <td><c:out value="${usuario.funcao}"/></td>
+                    <td><c:out value="${usuario.email}"/></td>
+                    <td><c:out value="${usuario.telefone}"/></td>
+                    <td><c:out value="${usuario.username}"/></td>
+                    <td><a href="ExcluirUsuarioServlet?idCliente=${usuario.id}">Excluir</a></td>
+                    <td><a href="AlterarUsuarioServlet?idCliente=${usuario.id}">Alterar</a></td>
                 </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
+            </c:forEach>
+
         </table>
 
 

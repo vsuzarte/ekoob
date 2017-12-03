@@ -115,8 +115,8 @@
                     <td><c:out value="${produto.id}"/></td>
                     <td><c:out value="${produto.nome}"/></td>
                     <td><c:out value="${produto.editora}"/></td>
-                    <td><c:out value="${clientes.preco}"/></td>
-                    <td><c:out value="${clientes.quantidade}"/></td>
+                    <td><c:out value="${produto.preco}"/></td>
+                    <td><c:out value="${produto.quantidade}"/></td>
                     <td><a href="ExcluirProdutoServlet?idProduto=${produto.id}">Excluir</a></td>
                     <td><a href="AlterarClienteServlet?idProduto=${produto.id}">Alterar</a></td>
                 </tr>

@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author guilherme.gcosta6
  */
-@WebServlet(name = "Consultaru", urlPatterns = {"/consultarUsuario"})
+@WebServlet(name = "Consultaru", urlPatterns = {"/consultar-usuario"})
 public class ConsultarUsuario extends HttpServlet {
 
     @Override
@@ -61,7 +61,7 @@ public class ConsultarUsuario extends HttpServlet {
             }
 
             sessao.setAttribute("listaUsuario", listaUsuario);
-            response.sendRedirect(request.getContextPath() + "/ConsultarUsuario.jsp");
+            response.sendRedirect(request.getContextPath() + "/consultarUsuario.jsp");
 
         } catch (Exception e) {
         }
