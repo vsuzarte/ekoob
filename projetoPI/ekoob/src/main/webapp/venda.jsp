@@ -121,7 +121,7 @@
                     <div id="cont" class="container">
                         <div class="centro">
                             <h3>Venda</h3>
-                            <form >
+                            <form action="${pageContext.request.contextPath}/Adicionarvenda" method="post">
                                 <div class="inputBox">
                                     <h4>Informações do Cliente</h4>
                                     <span><i class="fa fa-user" aria-hidden="true"></i></span>
@@ -133,13 +133,13 @@
                                 <div class="inputBox">
                                     <h4>Informações do Livro</h4>
                                     <span><i class="fa fa-book" aria-hidden="true"></i></span>
-                                    <input type="text" value="" disabled="true" placeholder="Livro escolhido"/> 
+                                    <input type="text" value="${produto.nome}" disabled="true" placeholder="Livro escolhido"/> 
                                     &nbsp 
                                     <i class="fa fa-archive" aria-hidden="true"></i>
-                                    <input type="text" disabled="true" placeholder="Estoque"/> 
+                                    <input type="text" value="${produto.quantidade}" disabled="true" placeholder="Estoque"/> 
                                     &nbsp
                                     <i class="fa fa-money" aria-hidden="true"></i>
-                                    <input type="text" disabled="true" placeholder="Valor Unitário"/> 
+                                    <input type="number" value="${produto.preco}" disabled="true" placeholder="Valor Unitário"/> 
 
                                 </div>
                                 <div class="inputBox"> 
@@ -220,6 +220,7 @@
                             <th scope="col">Nome</th>
                             <th scope="col">Preço</th>
                             <th scope="col">Estoque</th>
+                            <th scope="col">Adicionar</th>
                         </tr>
 
                         <c:forEach items="${listaProduto}" var="produto">
@@ -228,6 +229,7 @@
                                 <td><c:out value="${produto.nome}"/></td>
                                 <td><c:out value="${produto.preco}"/></td>
                                 <td><c:out value="${produto.quantidade}"/></td>
+                                <td><a href="AdicionarProduto?idProduto=${produto.id}">Adicionar</a></td>
                             </tr>
                         </c:forEach>
 
