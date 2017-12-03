@@ -137,6 +137,7 @@
                             <div class="col-sm-6">
                                 <div class="inputBox">
                                     <div class="inputText">Preço</div>
+                                   
                                     <input type="number" maxlength="10" size="10" name="preco" class="input required " value = "${preco}">
                                 </div>
 
