@@ -111,7 +111,7 @@
                                 <td><c:out value="${clientes.id}"/></td>
                                 <td><c:out value="${clientes.nome}"/></td>
                                 <td><c:out value="${clientes.cpf}"/></td>
-                                <td><a href="AdicionarCliente=${clientes.id}">Adicionar</a></td>
+                                <td><a href="AdicionarCliente?idCliente=${clientes.id}">Adicionar</a></td>
                             </tr>
                         </c:forEach>
 
@@ -121,19 +121,19 @@
                     <div id="cont" class="container">
                         <div class="centro">
                             <h3>Venda</h3>
-                            <form>
+                            <form >
                                 <div class="inputBox">
                                     <h4>Informações do Cliente</h4>
                                     <span><i class="fa fa-user" aria-hidden="true"></i></span>
-                                    <input type="text" disabled="true" placeholder="Cliente selecionado"/> 
+                                    <input type="text" value="${cliente.nome}" disabled="true" placeholder="Cliente selecionado"/> 
                                     <span><i class="fa fa-id-card-o" aria-hidden="true"></i></i></span>
-                                    <input type="text" disabled="true" placeholder="CPF"/> 
+                                    <input type="text" value="${cliente.cpf}" disabled="true" placeholder="CPF"/> 
 
                                 </div>
                                 <div class="inputBox">
                                     <h4>Informações do Livro</h4>
                                     <span><i class="fa fa-book" aria-hidden="true"></i></span>
-                                    <input type="text" disabled="true" placeholder="Livro escolhido"/> 
+                                    <input type="text" value="" disabled="true" placeholder="Livro escolhido"/> 
                                     &nbsp 
                                     <i class="fa fa-archive" aria-hidden="true"></i>
                                     <input type="text" disabled="true" placeholder="Estoque"/> 
