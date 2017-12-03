@@ -71,8 +71,14 @@ public class CadastroProduto extends HttpServlet {
         String autor = request.getParameter("autor");
         String editora = request.getParameter("editora");
         String ano = request.getParameter("ano");
-        Integer quantidade = Integer.parseInt(request.getParameter("estoque"));
-        double preco = Double.parseDouble(request.getParameter("preco"));
+        int quantidade = -1;
+        double preco = -1;
+        try {
+            quantidade = Integer.parseInt(request.getParameter("estoque"));
+            preco = Double.parseDouble(request.getParameter("preco"));
+        } catch (Exception e) {
+
+        }
 
         Produto produto = new Produto(nome, autor, editora, ano, quantidade, preco);
 
@@ -82,14 +88,25 @@ public class CadastroProduto extends HttpServlet {
         produto.setAno(ano);
         produto.setQuantidade(quantidade);
         produto.setPreco(preco);
+        String erro = "";
+        erro = com.aztec.koob.validadores.ValidadorProduto.validarProduto(produto);
+        if (erro.equals("")) {
+            try {
+                ProdutoDAO.inserirProduto(produto);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        try {
-            ProdutoDAO.inserirProduto(produto);
-        } catch (Exception e) {
-            e.printStackTrace();
+             request.setAttribute("mensagem", "Produto cadastrado ! ");
+            RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("/cadastrarProduto.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            request.setAttribute("mensagem", erro);
+            RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("/cadastrarProduto.jsp");
+            dispatcher.forward(request, response);
         }
-
-        response.sendRedirect(request.getContextPath() + "/cadastrarProduto.jsp");
 
     }
 }

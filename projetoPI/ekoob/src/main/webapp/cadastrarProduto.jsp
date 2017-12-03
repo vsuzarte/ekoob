@@ -118,7 +118,7 @@
                                     <div class="col-sm-6">
                                         <div class="inputBox">
                                             <div class="inputText">Editora</div>
-                                            <input type="text" maxlength="30" size="30" name="editora" class="input required email">
+                                            <input type="text" maxlength="30" size="30" name="editora" class="input required">
                                         </div>
 
                                     </div>
