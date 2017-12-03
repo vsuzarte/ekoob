@@ -26,7 +26,7 @@
     </head>
     <nav>
         <div class="full-width navbar">
-            <h2 class="brand">e-koob</h2>
+             <a class="navbar-brand" href="home.jsp"><img class="logo" src="logo.png" /></a>
             <ul>
                 <li><a class="active" href="home.jsp">Home</a></li>
 
@@ -46,7 +46,7 @@
                 <c:if test = "${sessionScope.usuario.getFuncao().equals('ti') 
                                 || sessionScope.usuario.getFuncao().equals('gerente')}">
 
-                      <li><a id ="usuario"href="cadastrarUsuario.jsp">Usuário</a></li>
+                      <li class="active"><a id ="usuario"href="cadastrarUsuario.jsp">Usuário</a></li>
 
                 </c:if>
 
@@ -76,7 +76,7 @@
                 <alert><c:out value="${mensagem}" /></alert>
                 </c:if> 
         </div>
-        <div class="container">
+        <div id="pagina" class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <ul class="nav nav-pills nav-justified">

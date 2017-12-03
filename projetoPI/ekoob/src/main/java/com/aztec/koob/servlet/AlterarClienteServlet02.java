@@ -60,24 +60,22 @@ HttpSession sessao = request.getSession();
 
         Date dataSql = ValidadorData.formatarData(dataNasc);
 
-        Cliente cliente = new Cliente(id, nome, sobrenome, dataSql, cpf, email, telefone, estado, cidade, endereco, cep, numCasa, genero);
+        /*Cliente cliente = new Cliente(id, nome, sobrenome, cpf, email, telefone, estado, cidade, endereco, cep, numCasa)
         cliente.setNome(nome);
         cliente.setSobrenome(sobrenome);
-        cliente.setDataNasc(dataSql);
-        cliente.setGenero(genero);
-        cliente.setCpf(cpf);
+ ==       cliente.setCpf(cpf);
         cliente.setEmail(email);
         cliente.setTelefone(telefone);
         cliente.setEstado(estado);
         cliente.setCidade(cidade);
         cliente.setEndereco(endereco);
         cliente.setNumCasa(numCasa);
-        cliente.setCep(cep);
+        cliente.setCep(cep);*/
 
         
             try {
 
-              ClienteDAO.atualizarCliente(cliente);
+              //ClienteDAO.atualizarCliente();
                 
                 response.sendRedirect(request.getContextPath() + "/consultarCliente.jsp");
 

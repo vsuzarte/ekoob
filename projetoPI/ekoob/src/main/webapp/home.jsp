@@ -23,10 +23,11 @@
 
     </head>
     <nav>
+
         <div class="full-width navbar">
-            <h2 class="brand">e-koob</h2>
+            <a class="navbar-brand" href="home.jsp"><img class="logo" src="logo.png" /></a> 
             <ul>
-                <li><a class="active" href="home.jsp">Home</a></li>
+                <li class="active"><a href="home.jsp">Home</a></li>
 
                 <c:if test = "${sessionScope.usuario.getFuncao().equals('vendedor')
                                 ||sessionScope.usuario.getFuncao().equals('estoquista') 

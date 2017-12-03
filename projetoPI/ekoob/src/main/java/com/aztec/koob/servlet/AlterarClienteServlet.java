@@ -41,8 +41,6 @@ public class AlterarClienteServlet extends HttpServlet {
         request.setAttribute("id", cliente.getId());
         request.setAttribute("nome", cliente.getNome());
         request.setAttribute("sobrenome", cliente.getSobrenome());
-        request.setAttribute("dataNasc", cliente.getDataNasc());
-        request.setAttribute("genero", cliente.getGenero());
         request.setAttribute("cpf", cliente.getCpf());
         request.setAttribute("email", cliente.getEmail());
         request.setAttribute("telefone", cliente.getTelefone());

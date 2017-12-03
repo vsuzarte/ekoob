@@ -18,13 +18,13 @@
     </head>
     <nav>
         <div class="full-width navbar">
-            <h2 class="brand">e-koob</h2>
+             <a class="navbar-brand" href="home.jsp"><img class="logo" src="logo.png" /></a>
             <ul>
                 <li><a class="active" href="home.jsp">Home</a></li>
                 <li><a href="cadastrarCliente.jsp">Cliente</a></li>
                 <li><a href="cadastrarProduto.jsp">Produto</a></li>
                 <li><a href="cadastrarUsuario.jsp">Usuário</a></li>
-                <li><a href="venda.jsp">Venda</a></li>
+                <li class="active"><a href="venda.jsp">Venda</a></li>
                 <li><a href="relatorio.jsp">Relatório</a></li>
             </ul>
             <div style="clear: both"></div>
@@ -33,7 +33,7 @@
     <body>
         <section>
             <div id="box" class="container-fluid">
-                <div class="container">
+                <div id="pagina" class="container">
                     <div class="formBox">
 
                         <form id="registerform" name="registerform">
