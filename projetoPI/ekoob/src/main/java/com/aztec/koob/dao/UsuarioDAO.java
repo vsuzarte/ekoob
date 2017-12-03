@@ -5,7 +5,6 @@
  */
 package com.aztec.koob.dao;
 
-
 import com.aztec.koob.conexao.ConnectionUtils;
 import com.aztec.koob.model.Usuario;
 import com.aztec.koob.validadores.ValidadorData;
@@ -48,8 +47,6 @@ public class UsuarioDAO {
             stmt.setString(2, usuario.getSobrenome());
 
             stmt.setString(3, usuario.getFuncao());
-
-        
 
             stmt.setString(4, usuario.getCpf());
 
@@ -120,7 +117,7 @@ public class UsuarioDAO {
                 String nomeUsuario = result.getString("nomeUsuario");
                 String sobrenomeUsuario = result.getString("sobrenomeUsuario");
                 String funcao = result.getString("funcao");
-            
+
                 String cpfUsuario = result.getString("cpfUsuario");
                 String emailUsuario = result.getString("emailUsuario");
                 String telefoneUsuario = result.getString("telefoneUsuario");
@@ -132,7 +129,7 @@ public class UsuarioDAO {
                 String senha = result.getString("senha");
 
                 Usuario usuario = new Usuario(idFuncionario, nomeUsuario, sobrenomeUsuario,
-                         cpfUsuario, emailUsuario,
+                        cpfUsuario, emailUsuario,
                         telefoneUsuario, estadoUsuario, cidadeUsuario,
                         enderecoUsuario, cepUsuario, funcao,
                         senha, username);
@@ -204,7 +201,7 @@ public class UsuarioDAO {
                 String nomeUsuario = result.getString("nomeUsuario");
                 String sobrenomeUsuario = result.getString("sobrenomeUsuario");
                 String funcao = result.getString("funcao");
-                
+
                 String cpfUsuario = result.getString("cpfUsuario");
                 String emailUsuario = result.getString("emailUsuario");
                 String telefoneUsuario = result.getString("telefoneUsuario");
@@ -216,7 +213,7 @@ public class UsuarioDAO {
                 String senha = result.getString("senha");
 
                 Usuario usuario = new Usuario(idUsuario, nomeUsuario, sobrenomeUsuario,
-                         cpfUsuario, emailUsuario,
+                        cpfUsuario, emailUsuario,
                         telefoneUsuario, estadoUsuario, cidadeUsuario,
                         enderecoUsuario, cepUsuario, funcao,
                         senha, username);
@@ -325,8 +322,6 @@ public class UsuarioDAO {
 
             preparedStatement.setString(2, usuario.getSobrenome());
 
-   
-
             preparedStatement.setString(3, usuario.getCpf());
 
             preparedStatement.setString(4, usuario.getEmail());
@@ -387,11 +382,9 @@ public class UsuarioDAO {
             preparedStatement = connection.prepareStatement(sql);
 
             //Configura os parâmetros do PreparedSatamente.
-      
-                preparedStatement = connection.prepareStatement(sql);
-                   
-                preparedStatement.setString(1, username);
-         
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, username);
 
             //Executa a consulta SQL no banco de dados
             result = preparedStatement.executeQuery();
@@ -404,7 +397,7 @@ public class UsuarioDAO {
                 String nomeUsuario = result.getString("nomeUsuario");
                 String sobrenomeUsuario = result.getString("sobrenomeUsuario");
                 String funcao = result.getString("funcao");
-              
+
                 String cpfUsuario = result.getString("cpfUsuario");
                 String emailUsuario = result.getString("emailUsuario");
                 String telefoneUsuario = result.getString("telefoneUsuario");
@@ -457,4 +450,92 @@ public class UsuarioDAO {
 
         return null;
     }
+
+    public static Usuario obterUsuario(Integer id) throws SQLException, Exception {
+
+        //Monta a string com o comando SQL para procurar um cliente de acordo com o ID,
+        //passado por parâmetro.
+        //A String ira ser ultilizada pelo prepared statement
+        String sql = "SELECT * FROM usuario WHERE (idUsuario=? AND disponivel=?)";
+
+        //connection para abertura e fechamento.
+        Connection connection = null;
+
+        //PreparedStatement para os comandos SQL e fechamento do mesmo.
+        PreparedStatement preparedStatement = null;
+
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
+
+        try {
+
+            //chama a classe criada ConnectionUtils.
+            //abre a conexão com o banco de dados.
+            connection = ConnectionUtils.getConnection();
+
+            //cria um statement para execução de instruções SQL.
+            preparedStatement = connection.prepareStatement(sql);
+
+            //Configura os parâmetros do PreparedSatamente.
+            //cada preparedStatement ira ocupar a interrogação na instrução SQL.
+            preparedStatement.setInt(1, id);
+            preparedStatement.setBoolean(2, true);
+
+            //Executa a consulta SQL no banco de dados.
+            result = preparedStatement.executeQuery();
+
+            //Verifica se há pelo menos um resultado
+            if (result.next()) {
+
+                //Cria a instância Cliente, pega os valores obtidos pela consulta ao banco,
+                //e a popula.
+                int idCliente = result.getInt("idUsuario");
+                String nomeCliente = result.getString("nomeUsuario");
+                String sobrenomeCliente = result.getString("sobrenomeUsuario");
+
+                String cpfCliente = result.getString("cpfUsuario");
+                String emailCliente = result.getString("emailUsuario");
+                String telefoneCliente = result.getString("telefoneUsuario");
+                String estadoCliente = result.getString("estadoUsuario");
+                String cidadeCliente = result.getString("cidadeUsuario");
+                String enderecoCliente = result.getString("enderecoUsuario");
+                String cepCliente = result.getString("cepUsuario");
+                String funcao = result.getString("funcao");
+                String username = result.getString("username");
+                String senha = result.getString("senha");
+
+                Usuario cliente = new Usuario(idCliente, nomeCliente, sobrenomeCliente, cpfCliente, 
+                        emailCliente, telefoneCliente, estadoCliente, cidadeCliente, 
+                        enderecoCliente, cepCliente, funcao, senha, username);
+
+                //Retorna o resultado
+                return cliente;
+            }
+
+        } finally {
+
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+
+        }
+
+        //Se chegamos aqui, não foi encontrado nenhum cliente porque
+        //a pesquisa não teve resultados
+        //Neste caso, não há um cliente a retornar, então retornamos "null"
+        return null;
+
+    }
+
 }

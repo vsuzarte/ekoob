@@ -122,7 +122,7 @@
                     <td><c:out value="${usuario.telefone}"/></td>
                     <td><c:out value="${usuario.username}"/></td>
                     <td><a href="ExcluirUsuarioServlet?idUsuario=${usuario.id}">Excluir</a></td>
-                    <td><a href="AlterarUsuarioServlet?idUsuario=${usuario.id}">Alterar</a></td>
+                    <td><a href="tela-editar-usuario?idUsuario=${usuario.id}">Alterar</a></td>
                 </tr>
             </c:forEach>
 
