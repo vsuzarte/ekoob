@@ -3,6 +3,42 @@ body{
     background: url("foto10.jpg");  
 }
 
+#divesquerda{
+    margin-top: 80px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 20px rgba(0,0,0,0);
+    border-radius: 5px; 
+    transition: .4s;
+}
+
+#divesquerda:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,.5);
+}
+
+#divdireita{
+     margin-top: 80px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 20px rgba(0,0,0,0);
+    border-radius: 5px; 
+    transition: .4s;
+}
+
+#divdireita:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,.5);
+}
+
+#divmeio{
+     margin-top: 80px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 20px rgba(0,0,0,0);
+    border-radius: 5px; 
+    transition: .4s;
+}
+
+#divmeio:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,.5);
+}
+
 .formBox{
     margin-top: 40px;
     padding: 5px;
@@ -60,11 +96,12 @@ select {
     position: relative;
     box-sizing: border-box;
     margin-bottom: 35px;
+    margin-top: 25px;
 }
 
 .input{
     position: relative;
-    width: 100%;
+    width: 30%;
     height: 40px;
     background: transparent;
     border: none;
@@ -93,12 +130,12 @@ select {
 }
 
 .button{
-    width: 100%;
+    width: 20%;
     background: #ed292a;
     color: #fff;
     border-radius: 0;
     border: none;
-    height: 50px;
-    font-size: 24px;
+    height: 30px;
+    font-size: 20px;
 }
 
