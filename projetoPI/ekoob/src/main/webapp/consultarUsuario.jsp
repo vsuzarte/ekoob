@@ -75,12 +75,12 @@
             <div id="box" id="pagina" class="container-fluid">
                 <div class="container">
                     <div class="formBox">
-                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/consultar-cliente" method="post">
+                        <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/consultar-produto" method="post">
                             <div class="row">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="inputBox">
-                                            <div class="inputText">Pesquisar Cliente</div>
+                                            <div class="inputText">Pesquisar Usuário</div>
                                             <input type="text" maxlength="50" size="50" name="nome" class="input required" id="fnome">
                                         </div>
                                     </div>
