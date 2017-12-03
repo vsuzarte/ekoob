@@ -116,7 +116,7 @@ public class UsuarioDAO {
                     listaUsuario = new ArrayList<Usuario>();
                 }
 
-                int idFuncionario = result.getInt("idFuncionario");
+                int idFuncionario = result.getInt("idUsuario");
                 String nomeUsuario = result.getString("nomeUsuario");
                 String sobrenomeUsuario = result.getString("sobrenomeUsuario");
                 String funcao = result.getString("funcao");
@@ -253,7 +253,7 @@ public class UsuarioDAO {
         //Monta a string com o comando SQL para "excluir" um cliente do banco de dados.
         //ultilizando o ID passado por parâmetro.
         //A String ira ser ultilizada pelo prepared statement
-        String sql = "UPDATE usuario SET DISPONIVEL=? WHERE (idFuncionario=?)";
+        String sql = "UPDATE usuario SET DISPONIVEL=? WHERE (idUsuario=?)";
 
         //Conexão para abertura e fechamento
         Connection connection = null;
@@ -301,7 +301,7 @@ public class UsuarioDAO {
         //A String ira ser ultilizada pelo prepared statement
         String sql = "UPDATE usuario SET nomeUsuario=?, sobrenomeUsuario=?, cpfUsuario=?, emailUsuario=?, telefoneUsuario=?, estadoUsuario=?, cidadeUsuario=?,"
                 + "enderecoUsuario=?, cepUsuario=?, senha=?, cargo=?"
-                + "WHERE (idFuncionario=?)";
+                + "WHERE (idUsuario=?)";
 
         //connection para abertura e fechamento.
         Connection connection = null;

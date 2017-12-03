@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author guilherme.gcosta6
  */
-@WebServlet(name = "Consultaru", urlPatterns = {"/consultar-usuario"})
+@WebServlet(name = "ConsultarUsuario", urlPatterns = {"/consultar-usuario"})
 public class ConsultarUsuario extends HttpServlet {
 
     @Override
@@ -56,7 +56,11 @@ public class ConsultarUsuario extends HttpServlet {
             request.setAttribute("listaUsuario", listaUsuario);
 
             if (nome == null || nome.equals("")) {
-                listaUsuario = UsuarioDAO.listarUsuario();
+                try {
+                    listaUsuario = UsuarioDAO.listarUsuario();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 request.setAttribute("listaUsuario", nome);
             }
 
