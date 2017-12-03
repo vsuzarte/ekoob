@@ -108,8 +108,8 @@
                 <th scope="col">Email</th>
                 <th scope="col">Telefone</th>
                  <th scope="col">Username</th>
+               <th scope="col">Excluir</th>
                 <th scope="col">Alterar</th>
-                <th scope="col">Excluir</th>
             </tr>
 
             <c:forEach items="${listaUsuario}" var="usuario">

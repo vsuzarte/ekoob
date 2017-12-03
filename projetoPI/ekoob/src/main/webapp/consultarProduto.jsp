@@ -106,8 +106,8 @@
                 <th scope="col">Editora</th>
                 <th scope="col">Preço</th>
                 <th scope="col">Estoque</th>
-                <th scope="col">Alterar</th>
                 <th scope="col">Excluir</th>
+                <th scope="col">Alterar</th>
             </tr>
 
             <c:forEach items="${listaProduto}" var="produto">

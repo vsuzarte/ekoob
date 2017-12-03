@@ -107,8 +107,8 @@
                 <th scope="col">CPF</th>
                 <th scope="col">Email</th>
                 <th scope="col">Telefone</th>
-                <th scope="col">Alterar</th>
                 <th scope="col">Excluir</th>
+                <th scope="col">Alterar</th>
             </tr>
 
             <c:forEach items="${listaClientes}" var="clientes">
@@ -119,7 +119,7 @@
                     <td><c:out value="${clientes.email}"/></td>
                     <td><c:out value="${clientes.telefone}"/></td>
                     <td><a href="ExcluirClienteServlet?idCliente=${clientes.id}">Excluir</a></td>
-                    <td><a href="AlterarClienteServlet?idCliente=${clientes.id}">Alterar</a></td>
+                    <td><a href="tela-editar-cliente?idCliente=${clientes.id}">Alterar</a></td>
                 </tr>
             </c:forEach>
 
