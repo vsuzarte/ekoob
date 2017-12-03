@@ -99,34 +99,29 @@
         </section>
         <br><br><br>    
         <table class="table">
-            <thead>
+
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Editora</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Estoque</th>
+                <th scope="col">Alterar</th>
+                <th scope="col">Excluir</th>
+            </tr>
+
+            <c:forEach items="${listaProduto}" var="produto">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Username</th>
+                    <td><c:out value="${produto.id}"/></td>
+                    <td><c:out value="${produto.nome}"/></td>
+                    <td><c:out value="${produto.editora}"/></td>
+                    <td><c:out value="${clientes.preco}"/></td>
+                    <td><c:out value="${clientes.quantidade}"/></td>
+                    <td><a href="ExcluirProdutoServlet?idProduto=${produto.id}">Excluir</a></td>
+                    <td><a href="AlterarClienteServlet?idProduto=${produto.id}">Alterar</a></td>
                 </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
+            </c:forEach>
+
         </table>
 
 

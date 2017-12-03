@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Vitor
  */
-@WebServlet(name = "ConsultarProduto", urlPatterns = {"/consultarProduto"})
+@WebServlet(name = "ConsultarProduto", urlPatterns = {"/consultar-produto"})
 public class ConsultarProduto extends HttpServlet {
 
     @Override
@@ -62,7 +62,7 @@ public class ConsultarProduto extends HttpServlet {
 
             
             sessao.setAttribute("listaProduto", listaProduto);
-            response.sendRedirect(request.getContextPath() + "/ConsultarProduto.jsp");
+            response.sendRedirect(request.getContextPath() + "/consultarProduto.jsp");
             
             //this.getServletContext().getRequestDispatcher("/consultarProduto.jsp").forward(request, response);
             //response.sendRedirect(request.getContextPath() + "/consultarProduto.jsp");
