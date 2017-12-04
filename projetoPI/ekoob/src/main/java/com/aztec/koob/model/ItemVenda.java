@@ -14,12 +14,10 @@ public class ItemVenda {
     private int id;
     private int qtde = 0;
     private int idProduto;
-    private String nome;
+    private int idVenda;
     private float preco;
 
-    public String getnomeProduto() {
-        return nome;
-    }
+    
 
     public float getpreco() {
         return preco;
@@ -27,6 +25,14 @@ public class ItemVenda {
 
     public void setQtd(int qtd) {
         this.qtde = qtde;
+    }
+
+    public int getIdVenda() {
+        return idVenda;
+    }
+
+    public void setIdVenda(int idVenda) {
+        this.idVenda = idVenda;
     }
 
     public void diminuirQtd() {
@@ -65,13 +71,7 @@ public class ItemVenda {
         qtde = n;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+  
 
     public void setPreco(float preco) {
         this.preco = preco;
