@@ -62,6 +62,7 @@ public class AdicionarItemVenda extends HttpServlet {
                 }
                 if (i == MockVenda.listaDeItemVenda.size() - 1) {
                     MockVenda.listaDeItemVenda.add(item);
+                    break;
                 }
             }
         }
