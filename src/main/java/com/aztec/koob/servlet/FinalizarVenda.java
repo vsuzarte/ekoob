@@ -5,24 +5,27 @@
  */
 package com.aztec.koob.servlet;
 
-
+import com.aztec.koob.dao.ItemDAO;
 import com.aztec.koob.dao.VendaDAO;
 import com.aztec.koob.model.Cliente;
 import com.aztec.koob.model.Usuario;
+import com.aztec.koob.model.Venda;
+import com.aztec.koob.model.ItemVenda;
+
+
+import com.aztec.koob.mock.MockVenda;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.aztec.koob.model.Venda;
-import com.aztec.koob.model.ItemVenda;
-import com.aztec.koob.dao.ItemVendaDAO;
-import com.aztec.koob.mock.MockVenda;
-
 
 /**
  *
@@ -45,6 +48,7 @@ public class FinalizarVenda extends HttpServlet {
         HttpSession sessao = request.getSession();
 
         int idCliente = (int) sessao.getAttribute("idCliente");
+        int idProduto = (int) sessao.getAttribute("idProduto");
         venda.setIdCliente(idCliente);
         double valor = MockVenda.calcularValor();
         venda.setValor(valor);
@@ -52,19 +56,22 @@ public class FinalizarVenda extends HttpServlet {
         try {
             VendaDAO.inserirVenda(idCliente, valor);
         } catch (Exception E) {
+            E.printStackTrace();
+        }
 
-            for (int i = 0; i < MockVenda.listaDeItemVenda.size(); i++) {
-                try {
-                    ItemVendaDAO.adicionarItemVenda(venda.getId(), MockVenda.listaDeItemVenda.get(i).getIdProduto());
-                } catch (Exception e) {
-
-                }
+        for (int i = 0; i < MockVenda.listaDeItemVenda.size(); i++) {
+            try {
+            
+                ItemDAO.adicionarItemVenda(venda.getId(), MockVenda.listaDeItemVenda.get(i).getIdProduto(), MockVenda.listaDeItemVenda.get(i).getQtde());
+            } catch (Exception e) {
+                e.printStackTrace();
 
             }
 
-            response.sendRedirect(request.getContextPath() + "/venda.jsp");
-
         }
 
+        response.sendRedirect(request.getContextPath() + "/venda.jsp");
+
     }
+
 }

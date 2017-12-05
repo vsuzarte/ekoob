@@ -56,7 +56,7 @@
     CREATE TABLE Venda (
         idVenda INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
         idCliente INT NOT NULL,
-        idProduto INT NOT NULL,
+        
         dataVenda TIMESTAMP NOT NULL,
         valorTotal DOUBLE NOT NULL,
         FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
@@ -68,7 +68,6 @@
         idItemVenda INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
         idVenda INTEGER NOT NULL,
         idProduto INTEGER NOT NULL,
-        /*nomeProduto VARCHAR(50) NOT NULL,*/
         Quantidade INT NOT NULL,
         FOREIGN KEY (idVenda) REFERENCES Venda(idVenda),
         FOREIGN KEY (idProduto) REFERENCES Produto(idProduto)
