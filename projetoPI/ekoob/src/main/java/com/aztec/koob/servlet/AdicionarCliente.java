@@ -48,6 +48,7 @@ public class AdicionarCliente extends HttpServlet {
             Cliente cliente = ClienteDAO.obterCliente(id);
            
             sessao.setAttribute("cliente", cliente);
+            sessao.setAttribute("idCliente", cliente.getId());
             response.sendRedirect(request.getContextPath() + "/venda.jsp");
 
             //RequestDispatcher dispatcher = request.getRequestDispatcher("clienteConsultado.jsp");

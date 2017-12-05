@@ -6,21 +6,15 @@
 package com.aztec.koob.servlet;
 
 import com.aztec.koob.dao.ClienteDAO;
-import com.aztec.koob.dao.ProdutoDAO;
 import com.aztec.koob.model.Cliente;
-import com.aztec.koob.model.ItemVenda;
-import com.aztec.koob.model.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,20 +38,6 @@ public class AdicionarClienteServlet extends HttpServlet {
             cliente = ClienteDAO.obterCliente(id);
             clienteDados = "Nome: " + cliente.getNome() + " CPF: " + cliente.getCpf();
 
-            HttpSession sessao = request.getSession();
-            sessao.setAttribute("cliente", cliente);
-
-            List listaDeProdutos = new ArrayList<Produto>();
-            listaDeProdutos = ProdutoDAO.listarProduto();
-
-            List listaDeItemVenda = new ArrayList<ItemVenda>();
-
-            sessao.setAttribute("listaDeProdutos", listaDeProdutos);
-
-            sessao.setAttribute("listaDeItemVenda", listaDeItemVenda);
-
-            response.sendRedirect(request.getContextPath() + "/home.jsp");
-
         } catch (Exception e) {
 
         }
@@ -79,6 +59,7 @@ public class AdicionarClienteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
 
     }
 

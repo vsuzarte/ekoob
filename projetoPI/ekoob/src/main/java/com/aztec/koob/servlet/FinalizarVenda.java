@@ -5,67 +5,64 @@
  */
 package com.aztec.koob.servlet;
 
+import com.aztec.koob.dao.ItemVendaDAO;
+import com.aztec.koob.dao.VendaDAO;
+import com.aztec.koob.model.Cliente;
+import com.aztec.koob.model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import com.aztec.koob.mock.MockVenda;
+import com.aztec.koob.model.Venda;
 
 /**
  *
- * @author Gabriel
+ * @author gabriel.sleal1
  */
-@WebServlet(name = "FinalizarVenda", urlPatterns = {"/FinalizarVenda"})
+@WebServlet(name = "FinalizarVenda", urlPatterns = {"/finalizar-venda"})
 public class FinalizarVenda extends HttpServlet {
 
-    
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        HttpSession sessao = request.getSession();
-        ArrayList listaDeProdutos
-        
-        
-        
-        
-    }
+        Venda venda = new Venda();
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        HttpSession sessao = request.getSession();
+
+        int idCliente = (int) sessao.getAttribute("idCliente");
+        venda.setIdCliente(idCliente);
+        double valor = MockVenda.calcularValor();
+        venda.setValor(valor);
+
+        try {
+            VendaDAO.inserirVenda(idCliente, valor);
+        } catch (Exception E) {
+
+       
+
+        for (int i = 0; i < MockVenda.listaDeItemVenda.size(); i++) {
+            try {
+                ItemVendaDAO.adicionarItemVenda(venda.getId(), MockVenda.listaDeItemVenda.get(i).getIdProduto());
+            } catch (Exception e) {
+
+            }
+
+        }
+
+  
+        response.sendRedirect(request.getContextPath() + "/venda.jsp");
+
+    }
 
 }

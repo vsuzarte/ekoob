@@ -12,35 +12,29 @@ package com.aztec.koob.model;
 public class ItemVenda {
 
     private int id;
-    private int qtde = 0;
+    private int qtde;
     private int idProduto;
-    private int idVenda;
-    private float preco;
+    private String nome;
+    private double preco;
+    private double valor;
 
-    
+    public String getnomeProduto() {
+        return nome;
+    }
 
-    public float getpreco() {
+    public double getpreco() {
         return preco;
     }
 
-    public void setQtd(int qtd) {
-        this.qtde = qtde;
+    public double getValor() {
+        return valor;
     }
 
-    public int getIdVenda() {
-        return idVenda;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
-
-    public void setIdVenda(int idVenda) {
-        this.idVenda = idVenda;
-    }
-
-    public void diminuirQtd() {
-        if (qtde > 0) {
-            qtde--;
-        }
-
-    }
+    
+    
 
     public void setId(int novo) {
         this.id = novo;
@@ -55,7 +49,7 @@ public class ItemVenda {
 
     }
 
-    public Float getPreco() {
+    public double getPreco() {
         return preco;
     }
 
@@ -71,9 +65,15 @@ public class ItemVenda {
         qtde = n;
     }
 
-  
+    public String getNome() {
+        return nome;
+    }
 
-    public void setPreco(float preco) {
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setPreco(double preco) {
         this.preco = preco;
     }
 

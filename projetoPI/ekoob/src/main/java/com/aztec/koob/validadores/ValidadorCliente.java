@@ -20,27 +20,27 @@ public class ValidadorCliente {
         String erro = "";
 
         if (cliente.getNome() == null || "".equals(cliente.getNome()) || cliente.getNome().startsWith(" ")) {
-            erro += "Nome obrigatório \n";
+            erro += "Nome obrigatório. \n";
         }
         if (cliente.getNome().length() > 14) {
-            erro += "Nome muito grande !  \n";
+            erro += "Nome muito grande !.  \n";
         }
         if (cliente.getSobrenome() == null || "".equals(cliente.getSobrenome()) || cliente.getSobrenome().startsWith(" ")) {
-            erro += "Sobrenome obrigatório \n";
+            erro += "Sobrenome obrigatório. \n";
         }
 
         if (cliente.getSobrenome().length() > 30) {
-            erro += "Sobrenome muito grande !  \n";
+            erro += "Sobrenome muito grande. !  \n";
         }
 
      
         if (cliente.getCpf() == null) {
-            erro += "CPF obrigatório \n";
+            erro += "CPF obrigatório. \n";
         }
 
         
          if (cliente.getCpf().length() < 11) {
-            erro += "Número de CPF muito pequeno \n";
+            erro += "Número de CPF muito pequeno. \n";
         }
         
 
@@ -49,37 +49,37 @@ public class ValidadorCliente {
         }*/
 
         if (cliente.getTelefone() == null || "".equals(cliente.getTelefone())) {
-            erro += "Telefone obrigatório \n";
+            erro += "Telefone obrigatório. \n";
         }
         
          if (cliente.getTelefone().length() < 8) {
-            erro += "Número de telefone muito pequeno \n";
+            erro += "Número de telefone muito pequeno. \n";
         }
         
         if (cliente.getEstado() == null || "".equals(cliente.getEstado())) {
-            erro += "Estado obrigatório \n";;
+            erro += "Estado obrigatório. \n";;
         }
 
         if (cliente.getCidade() == null || "".equals(cliente.getCidade())) {
-            erro += "Cidade obrigatória \n";
+            erro += "Cidade obrigatória. \n";
         }
 
         if (cliente.getCidade().length() > 30) {
-            erro += "Nome da cidade muito grande !  \n";
+            erro += "Nome da cidade muito grande. !  \n";
         }
       
         if (cliente.getEndereco().length() > 30) {
-            erro += "Endereço muito grande ! Digite apenas o nome da rua \n";
+            erro += "Endereço muito grande ! Digite apenas o nome da rua. \n";
         }
 
         if (cliente.getCep() == null || "".equals(cliente.getCep())) {
-            erro += "Cep obrigatório \n";
+            erro += "Cep obrigatório. \n";
         }
         if (cliente.getNumCasa() == null || "".equals(cliente.getNumCasa())) {
-            erro += "Número da casa obrigatório \n";
+            erro += "Número da casa obrigatório. \n";
         }
         if (cliente.getNumCasa().length() > 10) {
-            erro += "Número muito grande !  \n";
+            erro += "Número muito grande !.  \n";
         }
 
        

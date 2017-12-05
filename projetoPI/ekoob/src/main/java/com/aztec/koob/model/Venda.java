@@ -15,16 +15,23 @@ import com.aztec.koob.model.Cliente;
 public class Venda {
 
     private int id;
-    private float total;
-    private Date data;
-    private int idItemVenda;
+    private int idCliente;
+    private double valor;
 
-    public int getIdItemVenda() {
-        return idItemVenda;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdItemVenda(int idItemVenda) {
-        this.idItemVenda = idItemVenda;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
     public int getId() {
@@ -34,6 +41,9 @@ public class Venda {
     public void setId(int id) {
         this.id = id;
     }
+    private float total;
+    private Date data;
+    private Cliente cliente;
 
     public Date getData() {
         return data;
@@ -43,7 +53,13 @@ public class Venda {
         this.data = data;
     }
 
-   
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
 
     public float getTotal() {
         return total;
