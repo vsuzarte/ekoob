@@ -17,6 +17,7 @@ public class Venda {
     private int id;
     private int idCliente;
     private double valor;
+    private float total;
 
     public int getIdCliente() {
         return idCliente;
@@ -41,8 +42,8 @@ public class Venda {
     public void setId(int id) {
         this.id = id;
     }
-    private float total;
-    private Date data;
+
+   /* private Date data;
     private Cliente cliente;
 
     public Date getData() {
@@ -59,7 +60,7 @@ public class Venda {
 
     public Cliente getCliente() {
         return cliente;
-    }
+    */
 
     public float getTotal() {
         return total;

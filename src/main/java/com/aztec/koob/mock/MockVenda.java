@@ -19,6 +19,7 @@ public class MockVenda {
 
     public static ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
     public static ArrayList<ItemVenda> listaDeItemVenda = new ArrayList<ItemVenda>();
+    public static List<Venda> listaDeVenda = new ArrayList<Venda>();
 
     public static List<Venda> serviço() {
         try {
@@ -30,8 +31,7 @@ public class MockVenda {
         return listaDeVenda;
     }
 
-    public static List<Venda> listaDeVenda = serviço();
-
+//    public static List<Venda> listaDeVenda = serviço();
     public static double calcularValor() {
         double valor = 0;
         for (int i = 0; i < listaDeItemVenda.size(); i++) {

@@ -107,7 +107,7 @@ public class UsuarioDAO {
 
             result = preparedStatement.executeQuery();
 
-            // DateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy");
+           
             while (result.next()) {
                 if (listaUsuario == null) {
                     listaUsuario = new ArrayList<Usuario>();

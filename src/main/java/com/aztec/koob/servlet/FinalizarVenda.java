@@ -43,6 +43,8 @@ public class FinalizarVenda extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Venda venda = new Venda();
+        //POQUE TÁ PULANDO ESSA PORRA ????????????????
+        int ultimaVenda = 0;
 
         HttpSession sessao = request.getSession();
 
@@ -51,11 +53,14 @@ public class FinalizarVenda extends HttpServlet {
         venda.setIdCliente(idCliente);
         double valor = MockVenda.calcularValor();
         venda.setValor(valor);
-        venda.setId(MockVenda.listaDeVenda.get(MockVenda.listaDeVenda.size()).getId() + 1);
+
         MockVenda.listaDeVenda.add(venda);
 
         try {
             VendaDAO.inserirVenda(idCliente, valor);
+            MockVenda.listaDeVenda = MockVenda.serviço();
+            ultimaVenda = MockVenda.listaDeVenda.get(MockVenda.listaDeVenda.size() - 1).getId();
+
         } catch (Exception E) {
             E.printStackTrace();
         }
@@ -63,7 +68,7 @@ public class FinalizarVenda extends HttpServlet {
         for (int i = 0; i < MockVenda.listaDeItemVenda.size(); i++) {
             try {
 
-                ItemDAO.adicionarItemVenda(venda.getId(), MockVenda.listaDeItemVenda.get(i).getIdProduto(), MockVenda.listaDeItemVenda.get(i).getQtde());
+                ItemDAO.adicionarItemVenda(ultimaVenda, MockVenda.listaDeItemVenda.get(i).getIdProduto(), MockVenda.listaDeItemVenda.get(i).getQtde());
             } catch (Exception e) {
                 e.printStackTrace();
 
