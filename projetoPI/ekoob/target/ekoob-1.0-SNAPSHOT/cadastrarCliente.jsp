@@ -106,40 +106,40 @@
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Nome</div>
-                                        <input type="text" maxlength="50" size="50" name="nome" class="input required" id="fnome">
+                                        <input type="text" maxlength="30" size="30" name="nome" class="input required" id="fnome">
 
                                     </div>
 
-                                </div>
+                                </div> <br>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Sobrenome</div>
-                                        <input type="text" maxlength="50" size="50" name="sobrenome" class="input required" id="fnome">
+                                        <input type="text" maxlength="30" size="30" name="sobrenome" class="input required" id="fnome">
 
                                     </div>
 
-                                </div>
+                                </div><br>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">CPF</div>
                                         <input id="cpf" type="number" maxlength="11" size="11" name="cpf" class="input required">
                                     </div>
 
-                                </div>
+                                </div><br>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Email</div>
-                                        <input type="text" name="email" class="input required email">
+                                        <input type="text" maxlength="30" size="30" name="email" class="input required email">
                                     </div>
 
-                                </div>
+                                </div><br>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Telefone</div>
                                         <input type="number" maxlength="12" size="12" name="telefone" class="input required ">
                                     </div>
 
-                                </div>
+                                </div><br>
 
                                 <div class="col-sm-6">
                                     <div class="inputBox">
@@ -147,32 +147,32 @@
                                         <input id="cep" type="number" maxlength="8" size="8" name="cep" class="input required ">
                                     </div>
 
-                                </div>
+                                </div><br>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Rua</div>
-                                        <input id="rua" type="text" name="endereco" class="input required ">
+                                        <input id="rua" maxlength="30" size="30" type="text" name="endereco" class="input required ">
                                     </div>
 
-                                </div>
+                                </div><br>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Cidade</div>
-                                        <input id="cidade" type="text" name="cidade" class="input required ">
+                                        <input id="cidade" maxlength="30" size="30" type="text" name="cidade" class="input required ">
                                     </div>
 
-                                </div>
+                                </div><br>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">UF</div>
-                                        <input id="uf" type="text" name="estado" class="input required ">
+                                        <input id="uf" type="text" maxlength="2" size="2" name="estado" class="input required ">
                                     </div>
 
-                                </div>
+                                </div><br>
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Número</div>
-                                        <input  type="number" name="numero" class="input required ">
+                                        <input  type="number" maxlength="5" size="5" name="numero" class="input required ">
                                     </div>
 
                                 </div>

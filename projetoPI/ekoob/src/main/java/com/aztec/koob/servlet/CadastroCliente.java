@@ -85,15 +85,15 @@ public class CadastroCliente extends HttpServlet {
         cliente.setNumCasa(numCasa);
         cliente.setCep(cep);
 
-        String erro = ValidadorCliente.validarCliente(cliente);
+        //String erro = ValidadorCliente.validarCliente(cliente);
 
-        if (!erro.equals("")) {
+        /*if (!erro.equals("")) {
             request.setAttribute("mensagem", erro);
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("/cadastrarCliente.jsp");
             dispatcher.forward(request, response);
 
-        } else {
+        } else {*/
 
             try {
 
@@ -116,4 +116,4 @@ public class CadastroCliente extends HttpServlet {
 
     }
 
-}
+//}

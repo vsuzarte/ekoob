@@ -14,39 +14,36 @@ import com.sun.tools.javac.resources.compiler;
  * @author Gabriel
  */
 public class ValidadorUsuario {
-
+    /*
     public static String validarUsuario(Usuario cliente) {
-
+/*
         String erro = "";
 
         if (cliente.getNome() == null || "".equals(cliente.getNome()) || cliente.getNome().startsWith(" ")) {
-            erro += "Nome obrigatório \n";
+            erro += "Nome obrigatório.";
         }
         if (cliente.getNome().length() > 14) {
-            erro += "Nome muito grande !  \n";
+            erro += "Nome muito grande.";
         }
         if (cliente.getSobrenome() == null || "".equals(cliente.getSobrenome()) || cliente.getSobrenome().startsWith(" ")) {
-            erro += "Sobrenome obrigatório \n";
+            erro += "Sobrenome obrigatório.";
         }
 
         if (cliente.getSobrenome().length() > 30) {
-            erro += "Sobrenome muito grande !  \n";
+            erro += "Sobrenome muito grande.";
         }
 
         if (cliente.getCpf() == null) {
-            erro += "CPF obrigatório \n";
+            erro += "CPF obrigatório.";
         }
 
         if (cliente.getCpf().length() < 11) {
-            erro += "Número de CPF muito pequeno \n";
+            erro += "Número de CPF muito pequeno.";
         }
 
 
-        /*if (ValidadorEmail.validar(cliente.getEmail())) {
-            erro += "E-mail obrigatório \n";
-        }*/
         if (cliente.getTelefone() == null || "".equals(cliente.getTelefone())) {
-            erro += "Telefone obrigatório \n";
+            erro += "Telefone obrigatório.";
         }
 
         if (cliente.getTelefone().length() < 8) {
@@ -86,4 +83,6 @@ public class ValidadorUsuario {
         }
         return erro;
     }
+
+}*/
 }

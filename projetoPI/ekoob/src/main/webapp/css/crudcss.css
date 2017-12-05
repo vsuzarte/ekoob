@@ -5,9 +5,9 @@ body{
 
 #respostaErro{
     position: absolute;
-    margin-left : 15%;
+    margin-left : 40%;
     line-height: 50px;
-    font-size: 14px;
+    font-size: 30px;
     font-weight: bolder;
     color: red;
     transition: .5s;    

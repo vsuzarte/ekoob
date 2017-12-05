@@ -71,6 +71,21 @@
         </div>
     </nav>
     <body>
+        <br><br><br>
+        <div  id="pagina" class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="nav nav-pills nav-justified">
+                    <li ><a class="abranc" href="cadastrarProduto.jsp">Cadastro Produto</a></li>
+                    <li class="active"><a class="abranc" href="consultarProduto.jsp">Consultar Produto</a></li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div> 
         <section>
             <div id="box" id="pagina" class="container-fluid">
                 <div class="container">
@@ -81,7 +96,7 @@
                                     <div class="col-sm-6">
                                         <div class="inputBox">
                                             <div class="inputText">Pesquisar Produto</div>
-                                            <input type="text" maxlength="50" size="50" name="nome" class="input required" id="fnome">
+                                            <input type="text" maxlength="30" size="30" name="nome" class="input required" id="fnome">
                                         </div>
                                     </div>
 

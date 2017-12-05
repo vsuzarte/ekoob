@@ -13,7 +13,7 @@ import com.aztec.koob.model.Produto;
  */
 public class ValidadorProduto {
 
-    public static String validarProduto(Produto cliente) {
+    /*public static String validarProduto(Produto cliente) {
 
         String erro = "";
 
@@ -40,9 +40,7 @@ public class ValidadorProduto {
         }
 
 
-        /*if (ValidadorEmail.validar(cliente.getEmail())) {
-            erro += "E-mail obrigatório \n";
-        }*/
+    
         if ("".equals(cliente.getQuantidade())) {
             erro += "Estoque obrigatório. \n";
         }
@@ -63,5 +61,5 @@ public class ValidadorProduto {
 
         return erro;
     }
-
+*/
 }

@@ -96,7 +96,7 @@
             <div class="container">
                 <div class="formBox">
 
-                    <form action="${pageContext.request.contextPath}/cadastro-produto" method="post">
+                    <form id="registerform" name="registerform" action="${pageContext.request.contextPath}/cadastro-produto" method="post">
                         <div class="row">
                             <div class="col-sm-12">
                                 <h1>Cadastrar Produto</h1>
@@ -105,7 +105,7 @@
                                 <div class="col-sm-6">
                                     <div class="inputBox">
                                         <div class="inputText">Nome</div>
-                                        <input type="text" maxlength="50" size="50" name="nome" class="input required" id="fnome">
+                                        <input type="text" maxlength="30" size="30" name="nome" class="input required" id="fnome">
 
                                     </div>
 
@@ -142,7 +142,7 @@
                             <div class="col-sm-6">
                                 <div class="inputBox">
                                     <div class="inputText">Preço</div>
-                                    <input type="number" step = "0.01"maxlength="10" size="10" name="preco" class="input required " value = 0,0>
+                                    <input type="number" step = "0.01"maxlength="5" size="5" name="preco" class="input required " value = 0,0>
                                 </div>
 
                             </div>

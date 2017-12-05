@@ -71,6 +71,21 @@
         </div>
     </nav>
     <body>
+        <br><br><br>
+        <div id="pagina" class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="nav nav-pills nav-justified">
+                        <li ><a class="abranc" href="cadastrarUsuario.jsp">Cadastro Usuario</a></li>
+                        <li class="active"><a class="abranc" href="consultarUsuario.jsp">Consultar Usuario</a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
         <section>
             <div id="box" id="pagina" class="container-fluid">
                 <div class="container">

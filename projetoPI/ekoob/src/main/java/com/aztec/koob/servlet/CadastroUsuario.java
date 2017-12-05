@@ -98,18 +98,18 @@ public class CadastroUsuario extends HttpServlet {
 
         String erro = "";
 
-        erro = com.aztec.koob.validadores.ValidadorUsuario.validarUsuario(usuario);
-
-        if (!senha.equals(confirmarSenha)) {
+        //erro = com.aztec.koob.validadores.ValidadorUsuario.validarUsuario(usuario);
+        
+        if (!senha.equals(confirmaSenha)) {
             erro += "As senhas não são iguais !\n ";
         }
 
-        if (!erro.equals("")) {
+        /*if (!erro.equals("")) {
             request.setAttribute("mensagem", erro);
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("/cadastrarUsuario.jsp");
             dispatcher.forward(request, response);
-        } else {
+        } else {*/
             try {
                 UsuarioDAO.inserirUsuario(usuario);
             } catch (Exception e) {
@@ -121,10 +121,10 @@ public class CadastroUsuario extends HttpServlet {
 
             request.setAttribute("mensagem", "Usuário cadastrado ! ");
             RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("/cadastrarCliente.jsp");
+                    = request.getRequestDispatcher("/cadastrarUsuario.jsp");
             dispatcher.forward(request, response);
 
-        }
+        //}
 
     }
 }

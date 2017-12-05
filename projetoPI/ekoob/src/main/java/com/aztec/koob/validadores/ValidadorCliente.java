@@ -15,6 +15,7 @@ import com.aztec.koob.validadores.ValidadorEmail;
  */
 public class ValidadorCliente {
 
+    /*
     public static String validarCliente(Cliente cliente) {
 
         String erro = "";
@@ -44,9 +45,7 @@ public class ValidadorCliente {
         }
         
 
-        /*if (ValidadorEmail.validar(cliente.getEmail())) {
-            erro += "E-mail obrigatório \n";
-        }*/
+        
 
         if (cliente.getTelefone() == null || "".equals(cliente.getTelefone())) {
             erro += "Telefone obrigatório. \n";
@@ -86,5 +85,5 @@ public class ValidadorCliente {
 
         return erro;
     }
-
+    */
 }
