@@ -6,8 +6,10 @@
 package com.aztec.koob.servlet;
 
 import com.aztec.koob.dao.ProdutoDAO;
+import com.aztec.koob.mock.MockVenda;
 import com.aztec.koob.model.Produto;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,18 +29,17 @@ public class ConsultarProdutoVenda extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession sessao = request.getSession();
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        List<Produto> listaProduto;
+
+        List<Produto> listaProduto = new ArrayList<Produto>();
         HttpSession sessao = request.getSession();
         request.setAttribute("usuario", sessao.getAttribute("usuario"));
-        
 
         if (sessao == null || sessao.getAttribute("usuario") == null) {
             request.setAttribute("mensagemErro", "Você precisa logar ! ");
@@ -52,28 +53,29 @@ public class ConsultarProdutoVenda extends HttpServlet {
 
             String nome = request.getParameter("nome");
 
-            listaProduto = ProdutoDAO.procurarProduto(nome);
+            for (int i = 0; i < MockVenda.listaDeProdutos.size(); i++) {
+                if (MockVenda.listaDeProdutos.get(i).getNome().toUpperCase().contains(nome.toUpperCase())) {
+                    listaProduto.add(MockVenda.listaDeProdutos.get(i));
+                }
+            }
+            //  listaProduto = ProdutoDAO.procurarProduto(nome);
             request.setAttribute("listaProduto", listaProduto);
 
             if (nome == null || nome.equals("")) {
-                listaProduto = ProdutoDAO.listarProduto();
+                
                 request.setAttribute("listaProduto", listaProduto);
             }
 
-            
             sessao.setAttribute("listaProduto", listaProduto);
             response.sendRedirect(request.getContextPath() + "/venda.jsp");
-            
+
             //this.getServletContext().getRequestDispatcher("/consultarProduto.jsp").forward(request, response);
             //response.sendRedirect(request.getContextPath() + "/consultarProduto.jsp");
-
             //RequestDispatcher dispatcher = request.getRequestDispatcher("consultarProduto.jsp");
             //dispatcher.forward(request, response);
         } catch (Exception e) {
         }
 
-        
-        
     }
 
 }

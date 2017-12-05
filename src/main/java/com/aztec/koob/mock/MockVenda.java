@@ -17,9 +17,19 @@ import java.util.List;
  */
 public class MockVenda {
 
-    public static ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
+    public static List<Produto> listaDeProdutos = listar();
     public static ArrayList<ItemVenda> listaDeItemVenda = new ArrayList<ItemVenda>();
     public static List<Venda> listaDeVenda = new ArrayList<Venda>();
+
+    public static List<Produto> listar() {
+        try {
+            listaDeProdutos = com.aztec.koob.dao.ProdutoDAO.listarProduto();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listaDeProdutos;
+    }
 
     public static List<Venda> serviço() {
         try {

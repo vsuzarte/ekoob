@@ -67,6 +67,15 @@ public class AdicionarItemVenda extends HttpServlet {
             }
         }
 
+        for (int i = 0; i < MockVenda.listaDeProdutos.size(); i++) {
+
+            if (MockVenda.listaDeProdutos.get(i).getId() == item.getIdProduto()) {
+                MockVenda.listaDeProdutos.get(i).setQuantidade(MockVenda.listaDeProdutos.get(i).getQuantidade() - quantidade);
+                break;
+            }
+
+        }
+
         List<ItemVenda> lista = MockVenda.listaDeItemVenda;
 
         request.setAttribute("lista", lista);
