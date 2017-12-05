@@ -12,7 +12,6 @@ import com.aztec.koob.model.Usuario;
 import com.aztec.koob.model.Venda;
 import com.aztec.koob.model.ItemVenda;
 
-
 import com.aztec.koob.mock.MockVenda;
 
 import java.io.IOException;
@@ -52,6 +51,8 @@ public class FinalizarVenda extends HttpServlet {
         venda.setIdCliente(idCliente);
         double valor = MockVenda.calcularValor();
         venda.setValor(valor);
+        venda.setId(MockVenda.listaDeVenda.get(MockVenda.listaDeVenda.size()).getId() + 1);
+        MockVenda.listaDeVenda.add(venda);
 
         try {
             VendaDAO.inserirVenda(idCliente, valor);
@@ -61,7 +62,7 @@ public class FinalizarVenda extends HttpServlet {
 
         for (int i = 0; i < MockVenda.listaDeItemVenda.size(); i++) {
             try {
-            
+
                 ItemDAO.adicionarItemVenda(venda.getId(), MockVenda.listaDeItemVenda.get(i).getIdProduto(), MockVenda.listaDeItemVenda.get(i).getQtde());
             } catch (Exception e) {
                 e.printStackTrace();

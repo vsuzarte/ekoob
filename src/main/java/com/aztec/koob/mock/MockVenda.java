@@ -8,6 +8,8 @@ package com.aztec.koob.mock;
 import java.util.ArrayList;
 import com.aztec.koob.model.Produto;
 import com.aztec.koob.model.ItemVenda;
+import com.aztec.koob.model.Venda;
+import java.util.List;
 
 /**
  *
@@ -17,6 +19,18 @@ public class MockVenda {
 
     public static ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
     public static ArrayList<ItemVenda> listaDeItemVenda = new ArrayList<ItemVenda>();
+
+    public static List<Venda> serviço() {
+        try {
+            listaDeVenda = com.aztec.koob.dao.VendaDAO.listarVenda();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listaDeVenda;
+    }
+
+    public static List<Venda> listaDeVenda = serviço();
 
     public static double calcularValor() {
         double valor = 0;
