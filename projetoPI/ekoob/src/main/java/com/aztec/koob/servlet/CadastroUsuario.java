@@ -72,7 +72,7 @@ public class CadastroUsuario extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String username = request.getParameter("login");
         String senha = request.getParameter("senha");
-        String confirmaSenha = request.getParameter("confirmaSenha");
+        String confirmarSenha = request.getParameter("confirmarSenha");
         String email = request.getParameter("email");
         String telefone = request.getParameter("telefone");
         String endereco = request.getParameter("endereco");
@@ -100,7 +100,7 @@ public class CadastroUsuario extends HttpServlet {
 
         erro = com.aztec.koob.validadores.ValidadorUsuario.validarUsuario(usuario);
 
-        if (!senha.equals(confirmaSenha)) {
+        if (!senha.equals(confirmarSenha)) {
             erro += "As senhas não são iguais !\n ";
         }
 

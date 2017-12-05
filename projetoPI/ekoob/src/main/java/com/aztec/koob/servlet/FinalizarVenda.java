@@ -5,7 +5,7 @@
  */
 package com.aztec.koob.servlet;
 
-import com.aztec.koob.dao.ItemVendaDAO;
+
 import com.aztec.koob.dao.VendaDAO;
 import com.aztec.koob.model.Cliente;
 import com.aztec.koob.model.Usuario;
@@ -17,8 +17,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.aztec.koob.mock.MockVenda;
+
 import com.aztec.koob.model.Venda;
+import com.aztec.koob.model.ItemVenda;
+import com.aztec.koob.dao.ItemVendaDAO;
+import com.aztec.koob.mock.MockVenda;
+
 
 /**
  *
@@ -49,20 +53,18 @@ public class FinalizarVenda extends HttpServlet {
             VendaDAO.inserirVenda(idCliente, valor);
         } catch (Exception E) {
 
-       
+            for (int i = 0; i < MockVenda.listaDeItemVenda.size(); i++) {
+                try {
+                    ItemVendaDAO.adicionarItemVenda(venda.getId(), MockVenda.listaDeItemVenda.get(i).getIdProduto());
+                } catch (Exception e) {
 
-        for (int i = 0; i < MockVenda.listaDeItemVenda.size(); i++) {
-            try {
-                ItemVendaDAO.adicionarItemVenda(venda.getId(), MockVenda.listaDeItemVenda.get(i).getIdProduto());
-            } catch (Exception e) {
+                }
 
             }
 
+            response.sendRedirect(request.getContextPath() + "/venda.jsp");
+
         }
 
-  
-        response.sendRedirect(request.getContextPath() + "/venda.jsp");
-
     }
-
 }
