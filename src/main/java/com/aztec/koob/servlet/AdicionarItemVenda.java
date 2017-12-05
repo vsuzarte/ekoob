@@ -27,49 +27,59 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "AdicionarItemVenda", urlPatterns = {"/adicionar-item-venda"})
 public class AdicionarItemVenda extends HttpServlet {
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-         HttpSession sessao = request.getSession();
-        Produto produto = (Produto) sessao.getAttribute("produto");
 
-        int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-        
-        
+        HttpSession sessao = request.getSession();
+        Produto produto = (Produto) sessao.getAttribute("produto");
+        int quantidade = 0;
+        try {
+            quantidade = Integer.parseInt(request.getParameter("quantidade"));
+        } catch (Exception e) {
+            quantidade = 1;
+        }
 
         ItemVenda item = new ItemVenda();
         item.setIdProduto(produto.getId());
         item.setNome(produto.getNome());
         item.setPreco(produto.getPreco());
         item.setQtde(quantidade);
-        
+
         double valor = quantidade * item.getPreco();
-        
+
         item.setValor(valor);
 
-        MockVenda.listaDeItemVenda.add(item);
-        
-        List<ItemVenda> lista = MockVenda.listaDeItemVenda;
-        
-        request.setAttribute("lista", lista);
-        
-        RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("/venda.jsp");
-            dispatcher.forward(request, response);
+        if (MockVenda.listaDeItemVenda.size() == 0) {
+            MockVenda.listaDeItemVenda.add(item);
+        } else {
 
+            for (int i = 0; i < MockVenda.listaDeItemVenda.size(); i++) {
+                if (MockVenda.listaDeItemVenda.get(i).getIdProduto() == item.getIdProduto()) {
+                    MockVenda.listaDeItemVenda.get(i).setQtde(MockVenda.listaDeItemVenda.get(i).getQtde() + quantidade);
+                    MockVenda.listaDeItemVenda.get(i).setValor(MockVenda.listaDeItemVenda.get(i).getValor() + valor);
+                    break;
+                }
+                if (i == MockVenda.listaDeItemVenda.size() - 1) {
+                    MockVenda.listaDeItemVenda.add(item);
+                }
+            }
+        }
+
+        List<ItemVenda> lista = MockVenda.listaDeItemVenda;
+
+        request.setAttribute("lista", lista);
+
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/venda.jsp");
+        dispatcher.forward(request, response);
 
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
 
     }
-
-    
 
 }
